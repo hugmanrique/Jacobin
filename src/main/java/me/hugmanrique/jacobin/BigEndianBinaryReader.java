@@ -1,5 +1,7 @@
 package me.hugmanrique.jacobin;
 
+import me.hugmanrique.jacobin.util.ByteUtil;
+
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -7,7 +9,7 @@ import java.io.InputStream;
  * @author Hugo Manrique
  * @since 10/06/2018
  */
-public class BigEndianBinaryReader extends UnsignedBinaryReader {
+public class BigEndianBinaryReader extends AbstractBinaryReader {
   public BigEndianBinaryReader(InputStream input) {
     super(input);
   }
@@ -31,11 +33,21 @@ public class BigEndianBinaryReader extends UnsignedBinaryReader {
   }
 
   @Override
+  public int readUInt16() throws IOException {
+    return ByteUtil.unsignedInt16(readInt16());
+  }
+
+  @Override
   public int readInt32() throws IOException {
     return ((readByte() & 0xFF) << 24)
       | ((readByte() & 0xFF) << 16)
       | ((readByte() & 0xFF) << 8)
       | (readByte() & 0xFF);
+  }
+
+  @Override
+  public long readUInt32() throws IOException {
+    return ByteUtil.unsignedInt32(readInt32());
   }
 
   @Override
@@ -48,5 +60,10 @@ public class BigEndianBinaryReader extends UnsignedBinaryReader {
       | ((readByte() & 0xFFL) << 16)
       | ((readByte() & 0xFFL) << 8)
       | (readByte() & 0xFFL);
+  }
+
+  @Override
+  public long readUInt64() throws IOException {
+    return ByteUtil.unsignedInt64(readInt64());
   }
 }
