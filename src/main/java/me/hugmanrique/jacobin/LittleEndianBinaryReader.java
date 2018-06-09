@@ -7,7 +7,7 @@ import java.io.InputStream;
  * @author Hugo Manrique
  * @since 09/06/2018
  */
-public class LittleEndianBinaryReader extends AbstractBinaryReader {
+public class LittleEndianBinaryReader extends UnsignedBinaryReader {
   public LittleEndianBinaryReader(InputStream input) {
     super(input);
   }
@@ -31,21 +31,11 @@ public class LittleEndianBinaryReader extends AbstractBinaryReader {
   }
 
   @Override
-  public int readUInt16() throws IOException {
-    return readInt16() & 0xFFFF;
-  }
-
-  @Override
   public int readInt32() throws IOException {
     return ((readByte() & 0xFF))
       | ((readByte() & 0xFF) << 8)
       | ((readByte() & 0xFF) << 16)
       | ((readByte() & 0xFF) << 24);
-  }
-
-  @Override
-  public long readUInt32() throws IOException {
-    return readInt32() & 0xFFFFFFFFL;
   }
 
   @Override
@@ -58,10 +48,5 @@ public class LittleEndianBinaryReader extends AbstractBinaryReader {
       | ((readByte() & 0xFFL) << 40)
       | ((readByte() & 0xFFL) << 48)
       | ((readByte() & 0xFFL) << 56));
-  }
-
-  @Override
-  public long readUInt64() throws IOException {
-    return readInt64() & 0xFFFFFFFFFFFFFFFL;
   }
 }
