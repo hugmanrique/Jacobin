@@ -1,0 +1,9 @@
+target/
+out/
+
+.idea
+*.iml
+
+dependency-reduced-pom.xml
+bash.exe.stackdump
+.DS_Store
