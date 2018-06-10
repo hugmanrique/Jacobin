@@ -1,6 +1,7 @@
 package me.hugmanrique.jacobin;
 
 import junit.framework.TestCase;
+import me.hugmanrique.jacobin.reader.LittleEndianBinaryReader;
 
 import java.io.ByteArrayInputStream;
 import java.io.FilterInputStream;

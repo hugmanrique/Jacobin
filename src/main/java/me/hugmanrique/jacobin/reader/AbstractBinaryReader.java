@@ -1,6 +1,7 @@
-package me.hugmanrique.jacobin;
+package me.hugmanrique.jacobin.reader;
 
 import com.google.common.io.ByteSource;
+import me.hugmanrique.jacobin.BinaryReader;
 import me.hugmanrique.jacobin.util.ByteExceptions;
 import me.hugmanrique.jacobin.util.ByteUtil;
 

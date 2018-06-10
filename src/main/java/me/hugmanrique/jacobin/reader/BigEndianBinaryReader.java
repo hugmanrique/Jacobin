@@ -1,4 +1,4 @@
-package me.hugmanrique.jacobin;
+package me.hugmanrique.jacobin.reader;
 
 import me.hugmanrique.jacobin.util.ByteUtil;
 
