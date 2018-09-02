@@ -4,7 +4,6 @@ import org.junit.Test;
 
 import java.io.EOFException;
 import java.io.IOException;
-import java.nio.ByteOrder;
 
 import static org.junit.Assert.assertEquals;
 
