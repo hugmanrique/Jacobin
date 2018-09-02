@@ -35,7 +35,6 @@ public interface ByteStreamReader extends Closeable {
      * until the full amount has been skipped. Does not close the internal stream.
      *
      * @param size the number of bytes to skip
-     * @throws EOFException if the stream reaches the end before skipping all the bytes
      * @throws IOException if an I/O error occurs
      */
     void skip(long size) throws IOException;
