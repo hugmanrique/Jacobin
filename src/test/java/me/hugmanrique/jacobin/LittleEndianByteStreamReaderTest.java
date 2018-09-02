@@ -2,19 +2,11 @@ package me.hugmanrique.jacobin;
 
 import org.junit.Test;
 
-import java.nio.ByteOrder;
-
-import static org.junit.Assert.assertEquals;
-
 /**
  * @author Hugo Manrique
  * @since 02/09/2018
  */
 public class LittleEndianByteStreamReaderTest extends ByteStreamReaderTest {
-    public LittleEndianByteStreamReaderTest() {
-        this.byteOrder = ByteOrder.LITTLE_ENDIAN;
-    }
-
     @Test
     public void testLittleEndian() throws Exception {
         assertReadByte(bytes(0x12), 0x12);

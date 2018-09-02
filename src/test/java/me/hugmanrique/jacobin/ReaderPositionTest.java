@@ -13,10 +13,6 @@ import static org.junit.Assert.assertEquals;
  * @since 02/09/2018
  */
 public class ReaderPositionTest extends ByteStreamReaderTest {
-    public ReaderPositionTest() {
-        byteOrder = ByteOrder.LITTLE_ENDIAN;
-    }
-
     @Test
     public void testPositiveSkip() throws IOException {
         ByteStreamReader reader = newReader(bytes(0x12, 0x34, 0x56));

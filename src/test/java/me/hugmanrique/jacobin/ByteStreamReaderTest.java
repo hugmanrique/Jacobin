@@ -31,7 +31,7 @@ public class ByteStreamReaderTest {
         assertDataConsumed(data.length, reader);
     }
 
-    protected ByteOrder byteOrder;
+    protected ByteOrder byteOrder = ByteOrder.LITTLE_ENDIAN;
 
     protected ByteStreamReader newReader(byte[] data) {
         return new ByteStreamReaderBuilder()
