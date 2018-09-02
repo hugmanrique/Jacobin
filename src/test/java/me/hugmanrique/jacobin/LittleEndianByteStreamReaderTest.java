@@ -36,18 +36,4 @@ public class LittleEndianByteStreamReaderTest extends ByteStreamReaderTest {
             0x9ABCDEF012345678L
         );
     }
-
-    @Test
-    public void testPositions() throws Exception {
-        ByteStreamReader reader = newReader(bytes(0x12, 0x34, 0x56));
-        reader.setOffset(2);
-
-        assertEquals(0x56, reader.readByte());
-        assertDataConsumed(3, reader);
-
-        // Go back one byte
-        reader.setOffset(1);
-
-        assertEquals(0x34, reader.readByte());
-    }
 }
