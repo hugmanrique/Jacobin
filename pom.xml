@@ -74,10 +74,7 @@
                     <!-- We add the link ourselves, so that we can choose Java 10 over the version that -source suggests -->
                     <detectJavaApiLink>false</detectJavaApiLink>
                     <links>
-                        <link>
-                            <url>https://docs.oracle.com/javase/10/docs/api/</url>
-                            <location>https://docs.oracle.com/javase/10/docs/api/</location>
-                        </link>
+                        <link>https://docs.oracle.com/javase/10/docs/api/</link>
                     </links>
                     <overview>${basedir}/overview.html</overview>
                     <doctitle>Jacobin (${project.version})</doctitle>
