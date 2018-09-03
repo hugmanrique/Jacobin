@@ -73,12 +73,12 @@
                 <configuration>
                     <!-- We add the link ourselves, so that we can choose Java 10 over the version that -source suggests -->
                     <detectJavaApiLink>false</detectJavaApiLink>
-                    <offlineLinks>
-                        <offlineLink>
+                    <links>
+                        <link>
                             <url>https://docs.oracle.com/javase/10/docs/api/</url>
                             <location>https://docs.oracle.com/javase/10/docs/api/</location>
-                        </offlineLink>
-                    </offlineLinks>
+                        </link>
+                    </links>
                     <overview>${basedir}/overview.html</overview>
                     <doctitle>Jacobin (${project.version})</doctitle>
                     <bottom>Copyright &#169; Hugo Manrique. Released under the MIT License</bottom>
