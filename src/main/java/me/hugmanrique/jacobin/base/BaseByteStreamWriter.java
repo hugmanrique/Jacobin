@@ -59,20 +59,4 @@ public abstract class BaseByteStreamWriter implements ByteStreamWriter {
         stream.write(value);
         this.offset.incrementAndGet();
     }
-
-    @Override
-    public void writeUInt16(int value) throws IOException {
-        writeInt16((short) value);
-    }
-
-    @Override
-    public void writeUInt32(long value) throws IOException {
-        writeInt32((int) value);
-    }
-
-    @Override
-    public void writeUInt64(long value) throws IOException {
-        // TODO Print warning?
-        writeInt64(value);
-    }
 }

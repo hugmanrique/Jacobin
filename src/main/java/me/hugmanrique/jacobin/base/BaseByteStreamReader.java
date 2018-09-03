@@ -1,7 +1,6 @@
 package me.hugmanrique.jacobin.base;
 
 import me.hugmanrique.jacobin.ByteStreamReader;
-import me.hugmanrique.jacobin.util.Unsigned;
 
 import java.io.EOFException;
 import java.io.IOException;
@@ -84,7 +83,10 @@ public abstract class BaseByteStreamReader implements ByteStreamReader {
 
     @Override
     public int read(byte[] buffer, int offset, int length) throws IOException {
-        return stream.read(buffer, offset, length);
+        int readBytes = stream.read(buffer, offset, length);
+        this.offset.addAndGet(readBytes);
+
+        return readBytes;
     }
 
     @Override
@@ -98,20 +100,5 @@ public abstract class BaseByteStreamReader implements ByteStreamReader {
         offset.incrementAndGet();
 
         return value;
-    }
-
-    @Override
-    public int readUInt16() throws IOException {
-        return Unsigned.unsignedInt16(readInt16());
-    }
-
-    @Override
-    public long readUInt32() throws IOException {
-        return Unsigned.unsignedInt32(readInt32());
-    }
-
-    @Override
-    public long readUInt64() throws IOException {
-        return Unsigned.unsignedInt64(readInt64());
     }
 }

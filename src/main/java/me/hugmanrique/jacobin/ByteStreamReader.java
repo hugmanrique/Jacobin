@@ -1,9 +1,9 @@
 package me.hugmanrique.jacobin;
 
 import com.google.errorprone.annotations.CanIgnoreReturnValue;
+import me.hugmanrique.jacobin.order.ByteOrderReader;
 
 import java.io.Closeable;
-import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -13,13 +13,14 @@ import java.io.InputStream;
  * @author Hugo Manrique
  * @since 02/09/2018
  */
-public interface ByteStreamReader extends Closeable {
+public interface ByteStreamReader extends ByteOrderReader, Closeable {
     /**
      * Returns this reader's position, i.e. the offset of the internal stream.
      *
      * @return the position of this reader
+     * @throws IOException if an I/O error occurs
      */
-    long getOffset();
+    long getOffset() throws IOException;
 
     /**
      * Sets this reader's position, i.e. the offset of the internal stream.
@@ -68,74 +69,6 @@ public interface ByteStreamReader extends Closeable {
      */
     @CanIgnoreReturnValue
     int read(byte[] buffer, int offset, int length) throws IOException;
-
-    /**
-     * Reads and returns one byte from the stream, zero-extends it to type {@code int}, and returns
-     * the result, which is therefore in the range {@code 0} through {@code 255}.
-     *
-     * @return the unsigned 8-bit value read
-     * @throws EOFException if the stream reaches the end before reading the byte
-     * @throws IOException if an I/O error occurs
-     */
-    int readByte() throws IOException;
-
-    /**
-     * Reads two input bytes and returns a {@code short} value.
-     *
-     * @return the 16-bit value read
-     * @throws EOFException if the stream reaches the end before reading all the bytes
-     * @throws IOException if an I/O error occurs
-     */
-    short readInt16() throws IOException;
-
-    /**
-     * Reads two input bytes and returns an {@code int} value in the range {@code 0}
-     * through {@code 65,535}.
-     *
-     * @return the unsigned 16-bit value read
-     * @throws EOFException if the stream reaches the end before reading all the bytes
-     * @throws IOException if an I/O error occurs
-     */
-    int readUInt16() throws IOException;
-
-    /**
-     * Reads four input bytes and returns an {@code int} value.
-     *
-     * @return the 32-bit value read
-     * @throws EOFException if the stream reaches the end before reading all the bytes
-     * @throws IOException if an I/O error occurs
-     */
-    int readInt32() throws IOException;
-
-    /**
-     * Reads four input bytes and returns a {@code long} value in the range {@code 0}
-     * through {@code 4,294,967,295}.
-     *
-     * @return the unsigned 32-bit value read
-     * @throws EOFException if the stream reaches the end before reading all the bytes
-     * @throws IOException if an I/O error occurs
-     */
-    long readUInt32() throws IOException;
-
-    /**
-     * Reads eight input bytes and returns a {@code long} value.
-     *
-     * @return the 64-bit value read
-     * @throws EOFException if the stream reaches the end before reading all the bytes
-     * @throws IOException if an I/O error occurs
-     */
-    long readInt64() throws IOException;
-
-    /**
-     * Reads eight input bytes and returns a {@code long} value in the range {@code 0}
-     * through {@code 18,446,744,073,709,551,615}. The {@link Long} class contains
-     * methods to handle unsigned longs.
-     *
-     * @return the unsigned 64-bit value read
-     * @throws EOFException if the stream reaches the end before reading all the bytes
-     * @throws IOException if an I/O error occurs
-     */
-    long readUInt64() throws IOException;
 
     /**
      * Returns whether this reader supports going back to an already read
