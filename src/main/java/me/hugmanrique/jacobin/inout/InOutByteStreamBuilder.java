@@ -59,6 +59,8 @@ public class InOutByteStreamBuilder {
 
         if (order.equals(ByteOrder.LITTLE_ENDIAN)) {
             return new LittleEndianInOutByteStream(file, synchronous);
+        } else if (order.equals(ByteOrder.BIG_ENDIAN)) {
+            return new BigEndianInOutByteStream(file, synchronous);
         }
 
         throw new UnsupportedOperationException(order + " byte order not supported");

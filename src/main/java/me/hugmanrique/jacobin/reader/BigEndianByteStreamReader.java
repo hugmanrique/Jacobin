@@ -6,6 +6,8 @@ import me.hugmanrique.jacobin.order.BigEndianReader;
 import java.io.InputStream;
 
 /**
+ * Big-endian implementation of {@link ByteStreamReader}.
+ *
  * @author Hugo Manrique
  * @since 02/09/2018
  */

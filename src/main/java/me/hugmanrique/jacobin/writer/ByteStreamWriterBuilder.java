@@ -70,6 +70,8 @@ public final class ByteStreamWriterBuilder {
 
         if (order.equals(ByteOrder.LITTLE_ENDIAN)) {
             return new LittleEndianByteStreamWriter(stream);
+        } else if (order.equals(ByteOrder.BIG_ENDIAN)) {
+            return new BigEndianByteStreamWriter(stream);
         }
 
         throw new UnsupportedOperationException(order + " byte order not supported");
