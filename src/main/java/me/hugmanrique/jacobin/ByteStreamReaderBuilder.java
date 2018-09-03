@@ -11,13 +11,13 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import static com.google.common.base.Preconditions.checkPositionIndex;
 
 /**
- * Creates a new {@link ByteStreamReader} from different kinds of sources
- * with a defined {@link ByteOrder}.
+ * Creates a new {@link ByteStreamReader} from different kinds of
+ * sources with a defined {@link ByteOrder}.
  *
  * @author Hugo Manrique
  * @since 02/09/2018
  */
-public class ByteStreamReaderBuilder {
+public final class ByteStreamReaderBuilder {
     private InputStream stream;
     private ByteOrder order = ByteOrder.LITTLE_ENDIAN;
 
@@ -73,19 +73,18 @@ public class ByteStreamReaderBuilder {
      * Sets the byte order of the {@link ByteStreamReader}.
      */
     public ByteStreamReaderBuilder order(ByteOrder order) {
-        this.order = order;
+        this.order = checkNotNull(order, "byte order");
         return this;
     }
 
     /**
-     * Creates a new {@link ByteStreamReader} from different kinds of sources
-     * with a defined {@link ByteOrder}.
+     * Creates a new {@link ByteStreamReader} from different kinds of
+     * sources with a defined {@link ByteOrder}.
      *
      * @return the new {@link ByteStreamReader}
      */
     public ByteStreamReader build() {
         checkNotNull(stream, "stream");
-        checkNotNull(order, "byte order");
 
         if (order.equals(ByteOrder.LITTLE_ENDIAN)) {
             return new LittleEndianByteStreamReader(stream);
