@@ -78,6 +78,11 @@ public abstract class BaseByteStreamReader implements ByteStreamReader {
     }
 
     @Override
+    public int available() throws IOException {
+        return stream.available();
+    }
+
+    @Override
     public int read(byte[] buffer, int offset, int length) throws IOException {
         return stream.read(buffer, offset, length);
     }

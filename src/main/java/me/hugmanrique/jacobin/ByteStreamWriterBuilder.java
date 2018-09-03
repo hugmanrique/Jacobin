@@ -34,7 +34,7 @@ public final class ByteStreamWriterBuilder {
      * Creates a new {@link ByteStreamWriter} instance to write to
      * a {@link ByteArrayOutputStream}.
      */
-    public ByteStreamWriterBuilder stream() {
+    public ByteStreamWriterBuilder bytes() {
         this.stream = new ByteArrayOutputStream();
         return this;
     }
@@ -44,9 +44,9 @@ public final class ByteStreamWriterBuilder {
      * {@link ByteArrayOutputStream} which will hold {@code size} bytes
      * before resizing.
      *
-     * @throws IndexOutOfBoundsException if {@code size} is negative
+     * @throws IllegalArgumentException if {@code size} is negative
      */
-    public ByteStreamWriterBuilder stream(int size) {
+    public ByteStreamWriterBuilder bytes(int size) {
         this.stream = new ByteArrayOutputStream(size);
         return this;
     }

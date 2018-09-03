@@ -1,4 +1,7 @@
-package me.hugmanrique.jacobin;
+package me.hugmanrique.jacobin.reader;
+
+import me.hugmanrique.jacobin.ByteStreamReader;
+import me.hugmanrique.jacobin.ByteStreamReaderBuilder;
 
 import java.nio.ByteOrder;
 

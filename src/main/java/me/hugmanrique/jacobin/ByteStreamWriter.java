@@ -1,7 +1,7 @@
 package me.hugmanrique.jacobin;
 
+import java.io.Closeable;
 import java.io.IOException;
-import java.io.OutputStream;
 
 /**
  * Provides a way to write data into a stream.
@@ -9,7 +9,7 @@ import java.io.OutputStream;
  * @author Hugo Manrique
  * @since 03/09/2018
  */
-public interface ByteStreamWriter {
+public interface ByteStreamWriter extends Closeable {
     /**
      * Returns this writer's position, i.e. the offset of the internal stream.
      *

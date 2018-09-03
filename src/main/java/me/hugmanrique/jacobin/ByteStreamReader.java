@@ -40,6 +40,14 @@ public interface ByteStreamReader extends Closeable {
     void skip(long size) throws IOException;
 
     /**
+     * Returns an estimate of the number of bytes that can be reade from the
+     * internal stream without blocking by the next read (or skip) invocation.
+     *
+     * @throws IOException if an I/O error occurs
+     */
+    int available() throws IOException;
+
+    /**
      * Reads some bytes from the internal stream and stores them into the buffer array {@code buffer}.
      * This method blocks until {@code length} bytes of input data have been read into the array, or
      * end of file is detected. The number of bytes read is returned, possibly zero. Does not close

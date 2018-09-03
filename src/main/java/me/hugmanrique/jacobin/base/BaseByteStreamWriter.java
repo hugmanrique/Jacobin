@@ -38,6 +38,11 @@ public abstract class BaseByteStreamWriter implements ByteStreamWriter {
     }
 
     @Override
+    public void close() throws IOException {
+        stream.close();
+    }
+
+    @Override
     public void write(byte[] data, int offset, int length) throws IOException {
         stream.write(data, offset, length);
         this.offset.addAndGet(length);
