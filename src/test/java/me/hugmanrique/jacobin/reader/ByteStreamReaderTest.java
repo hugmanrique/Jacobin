@@ -37,6 +37,7 @@ public class ByteStreamReaderTest {
 
     protected ByteOrder byteOrder = ByteOrder.LITTLE_ENDIAN;
 
+    // Note: this reader doesn't need to be closed
     protected ByteStreamReader newReader(byte[] data) {
         return new ByteStreamReaderBuilder()
                 .stream(data)
