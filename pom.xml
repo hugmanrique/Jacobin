@@ -71,7 +71,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <overview>${basedir}/src/main/java/me/hugmanrique/jacobin/package-info.java</overview>
+                    <overview>${basedir}/overview.html</overview>
                 </configuration>
             </plugin>
         </plugins>
