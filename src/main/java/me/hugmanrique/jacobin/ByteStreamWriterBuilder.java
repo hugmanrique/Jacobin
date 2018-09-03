@@ -17,7 +17,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
  */
 public final class ByteStreamWriterBuilder {
     private OutputStream stream;
-    private ByteOrder order = ByteOrder.BIG_ENDIAN;
+    private ByteOrder order = ByteOrder.LITTLE_ENDIAN;
 
     public ByteStreamWriterBuilder() {}
 

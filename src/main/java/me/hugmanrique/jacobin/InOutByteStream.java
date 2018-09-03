@@ -9,7 +9,7 @@ import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
- * Combined byte streams reader and writer implementations.
+ * Combined byte streams reader and writer class.
  *
  * @author Hugo Manrique
  * @since 03/09/2018
@@ -17,6 +17,15 @@ import static com.google.common.base.Preconditions.checkNotNull;
 public abstract class InOutByteStream implements ByteStreamReader, ByteStreamWriter, Closeable {
     private final RandomAccessFile file;
 
+    /**
+     * Creates a new {@link InOutByteStream} instance that will read and write
+     * to/from the given file.
+     *
+     * @param file the file to be read and written
+     * @param synchronousWrites whether each update to the file's content should be written
+     *                          synchronously to the underlying storage device.
+     * @throws IOException if an I/O error occurs
+     */
     public InOutByteStream(File file, boolean synchronousWrites) throws IOException {
         checkNotNull(file, "file");
         this.file = new RandomAccessFile(file, synchronousWrites ? "rwd" : "rw");
