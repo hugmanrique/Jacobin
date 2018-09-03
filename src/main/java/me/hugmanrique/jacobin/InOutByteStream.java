@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 
 import static com.google.common.base.Preconditions.checkArgument;
+import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * Combined byte streams reader and writer implementations.
@@ -17,6 +18,7 @@ public abstract class InOutByteStream implements ByteStreamReader, ByteStreamWri
     private final RandomAccessFile file;
 
     public InOutByteStream(File file, boolean synchronousWrites) throws IOException {
+        checkNotNull(file, "file");
         this.file = new RandomAccessFile(file, synchronousWrites ? "rwd" : "rw");
     }
 
@@ -47,7 +49,7 @@ public abstract class InOutByteStream implements ByteStreamReader, ByteStreamWri
     }
 
     @Override
-    public int available() throws IOException {
+    public int available() {
         throw new UnsupportedOperationException();
     }
 

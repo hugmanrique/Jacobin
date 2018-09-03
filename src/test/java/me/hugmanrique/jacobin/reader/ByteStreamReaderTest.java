@@ -3,6 +3,7 @@ package me.hugmanrique.jacobin.reader;
 import me.hugmanrique.jacobin.ByteStreamReader;
 import me.hugmanrique.jacobin.ByteStreamReaderBuilder;
 
+import java.io.IOException;
 import java.nio.ByteOrder;
 
 import static org.junit.Assert.assertEquals;
@@ -22,7 +23,7 @@ public class ByteStreamReaderTest {
         return bytes;
     }
 
-    protected void assertDataConsumed(int length, ByteStreamReader reader) {
+    protected void assertDataConsumed(int length, ByteStreamReader reader) throws IOException {
         assertEquals(
                 "Reader offset should be moved by " + length + " positions",
                 length,
@@ -30,7 +31,7 @@ public class ByteStreamReaderTest {
         );
     }
 
-    protected void assertDataConsumed(byte[] data, ByteStreamReader reader) {
+    protected void assertDataConsumed(byte[] data, ByteStreamReader reader) throws IOException {
         assertDataConsumed(data.length, reader);
     }
 
