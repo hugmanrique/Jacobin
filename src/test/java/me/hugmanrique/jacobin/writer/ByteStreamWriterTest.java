@@ -35,8 +35,8 @@ public class ByteStreamWriterTest {
                 .build();
     }
 
-    private void newReader() {
-        this.reader = new ByteStreamReaderBuilder()
+    protected ByteStreamReader newReader() {
+        return this.reader = new ByteStreamReaderBuilder()
                 .stream(stream.toByteArray())
                 .order(byteOrder)
                 .build();
