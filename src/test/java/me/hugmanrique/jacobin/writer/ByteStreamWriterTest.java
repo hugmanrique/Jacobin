@@ -1,9 +1,7 @@
 package me.hugmanrique.jacobin.writer;
 
-import me.hugmanrique.jacobin.ByteStreamReader;
-import me.hugmanrique.jacobin.ByteStreamReaderBuilder;
-import me.hugmanrique.jacobin.ByteStreamWriter;
-import me.hugmanrique.jacobin.ByteStreamWriterBuilder;
+import me.hugmanrique.jacobin.reader.ByteStreamReader;
+import me.hugmanrique.jacobin.reader.ByteStreamReaderBuilder;
 import org.junit.Before;
 
 import java.io.ByteArrayOutputStream;

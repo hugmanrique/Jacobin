@@ -1,4 +1,4 @@
-package me.hugmanrique.jacobin;
+package me.hugmanrique.jacobin.writer;
 
 import me.hugmanrique.jacobin.order.ByteOrderWriter;
 

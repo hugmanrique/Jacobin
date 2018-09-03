@@ -1,6 +1,5 @@
 package me.hugmanrique.jacobin.inout;
 
-import me.hugmanrique.jacobin.InOutByteStream;
 import me.hugmanrique.jacobin.order.LittleEndianReader;
 import me.hugmanrique.jacobin.order.LittleEndianWriter;
 

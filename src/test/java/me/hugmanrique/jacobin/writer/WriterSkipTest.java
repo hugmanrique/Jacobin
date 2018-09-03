@@ -1,6 +1,6 @@
 package me.hugmanrique.jacobin.writer;
 
-import me.hugmanrique.jacobin.ByteStreamReader;
+import me.hugmanrique.jacobin.reader.ByteStreamReader;
 import org.junit.Test;
 
 import java.io.IOException;

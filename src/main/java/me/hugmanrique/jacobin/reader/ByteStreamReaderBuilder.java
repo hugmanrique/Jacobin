@@ -1,7 +1,4 @@
-package me.hugmanrique.jacobin;
-
-import me.hugmanrique.jacobin.reader.BigEndianByteStreamReader;
-import me.hugmanrique.jacobin.reader.LittleEndianByteStreamReader;
+package me.hugmanrique.jacobin.reader;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;

@@ -1,6 +1,6 @@
 package me.hugmanrique.jacobin.base;
 
-import me.hugmanrique.jacobin.ByteStreamReader;
+import me.hugmanrique.jacobin.reader.ByteStreamReader;
 
 import java.io.EOFException;
 import java.io.IOException;

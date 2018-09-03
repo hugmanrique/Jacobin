@@ -1,6 +1,5 @@
 package me.hugmanrique.jacobin.writer;
 
-import me.hugmanrique.jacobin.ByteStreamWriter;
 import me.hugmanrique.jacobin.base.BaseByteStreamWriter;
 import me.hugmanrique.jacobin.order.LittleEndianWriter;
 

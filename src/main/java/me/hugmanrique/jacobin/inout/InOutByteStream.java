@@ -1,4 +1,7 @@
-package me.hugmanrique.jacobin;
+package me.hugmanrique.jacobin.inout;
+
+import me.hugmanrique.jacobin.reader.ByteStreamReader;
+import me.hugmanrique.jacobin.writer.ByteStreamWriter;
 
 import java.io.Closeable;
 import java.io.File;

@@ -1,4 +1,4 @@
-package me.hugmanrique.jacobin;
+package me.hugmanrique.jacobin.reader;
 
 import com.google.errorprone.annotations.CanIgnoreReturnValue;
 import me.hugmanrique.jacobin.order.ByteOrderReader;

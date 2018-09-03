@@ -1,6 +1,5 @@
 package me.hugmanrique.jacobin.reader;
 
-import me.hugmanrique.jacobin.ByteStreamReader;
 import me.hugmanrique.jacobin.base.BaseByteStreamReader;
 import me.hugmanrique.jacobin.order.LittleEndianReader;
 

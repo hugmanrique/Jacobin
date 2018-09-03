@@ -1,8 +1,5 @@
 package me.hugmanrique.jacobin.reader;
 
-import me.hugmanrique.jacobin.ByteStreamReader;
-import me.hugmanrique.jacobin.ByteStreamReaderBuilder;
-
 import java.io.IOException;
 import java.nio.ByteOrder;
 

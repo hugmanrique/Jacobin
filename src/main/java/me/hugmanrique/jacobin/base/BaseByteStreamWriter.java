@@ -1,6 +1,6 @@
 package me.hugmanrique.jacobin.base;
 
-import me.hugmanrique.jacobin.ByteStreamWriter;
+import me.hugmanrique.jacobin.writer.ByteStreamWriter;
 
 import java.io.IOException;
 import java.io.OutputStream;

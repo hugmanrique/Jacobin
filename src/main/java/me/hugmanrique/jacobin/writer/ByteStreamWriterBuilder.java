@@ -1,6 +1,4 @@
-package me.hugmanrique.jacobin;
-
-import me.hugmanrique.jacobin.writer.LittleEndianByteStreamWriter;
+package me.hugmanrique.jacobin.writer;
 
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;

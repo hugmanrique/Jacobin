@@ -1,6 +1,5 @@
 package me.hugmanrique.jacobin.inout;
 
-import me.hugmanrique.jacobin.InOutByteStream;
 import org.junit.Test;
 
 import java.nio.ByteOrder;

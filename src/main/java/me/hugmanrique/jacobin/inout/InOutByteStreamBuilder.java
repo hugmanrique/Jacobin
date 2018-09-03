@@ -1,6 +1,4 @@
-package me.hugmanrique.jacobin;
-
-import me.hugmanrique.jacobin.inout.LittleEndianInOutByteStream;
+package me.hugmanrique.jacobin.inout;
 
 import java.io.File;
 import java.io.IOException;
