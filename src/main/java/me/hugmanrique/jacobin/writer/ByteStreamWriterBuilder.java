@@ -15,7 +15,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
  */
 public final class ByteStreamWriterBuilder {
     private OutputStream stream;
-    private ByteOrder order = ByteOrder.LITTLE_ENDIAN;
+    private ByteOrder order = ByteOrder.nativeOrder();
 
     public ByteStreamWriterBuilder() {}
 
@@ -59,9 +59,11 @@ public final class ByteStreamWriterBuilder {
 
     /**
      * Creates a new {@link ByteStreamWriter} from different kinds of
-     * sources with a defined {@link ByteOrder}.
+     * sources with a defined {@link ByteOrder} (which
+     * defaults to the native endianness).
      *
      * @return the new {@link ByteStreamWriter}
+     * @see ByteOrder#nativeOrder()
      */
     public ByteStreamWriter build() {
         checkNotNull(stream, "stream");

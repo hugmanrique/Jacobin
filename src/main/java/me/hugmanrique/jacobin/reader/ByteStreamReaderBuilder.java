@@ -16,7 +16,7 @@ import static com.google.common.base.Preconditions.checkPositionIndex;
  */
 public final class ByteStreamReaderBuilder {
     private InputStream stream;
-    private ByteOrder order = ByteOrder.LITTLE_ENDIAN;
+    private ByteOrder order = ByteOrder.nativeOrder();
 
     public ByteStreamReaderBuilder() {}
 
@@ -76,9 +76,11 @@ public final class ByteStreamReaderBuilder {
 
     /**
      * Creates a new {@link ByteStreamReader} from different kinds of
-     * sources with a defined {@link ByteOrder}.
+     * sources with a defined {@link ByteOrder} (which
+     * defaults to the native endianness).
      *
      * @return the new {@link ByteStreamReader}
+     * @see ByteOrder#nativeOrder()
      */
     public ByteStreamReader build() {
         checkNotNull(stream, "stream");

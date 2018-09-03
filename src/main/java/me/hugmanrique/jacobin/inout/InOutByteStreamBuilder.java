@@ -15,7 +15,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 public class InOutByteStreamBuilder {
     private File file;
     private boolean synchronous;
-    private ByteOrder order = ByteOrder.LITTLE_ENDIAN;
+    private ByteOrder order = ByteOrder.nativeOrder();
 
     public InOutByteStreamBuilder() {}
 
@@ -47,10 +47,12 @@ public class InOutByteStreamBuilder {
 
     /**
      * Creates a new {@link InOutByteStream} that will read and write
-     * to/from the given file with a defined {@link ByteOrder}.
+     * to/from the given file with a defined {@link ByteOrder} (which
+     * defaults to the native endianness).
      *
      * @return the new {@link InOutByteStream}
      * @throws IOException if an I/O error occurs
+     * @see ByteOrder#nativeOrder()
      */
     public InOutByteStream build() throws IOException {
         checkNotNull(file, "file");

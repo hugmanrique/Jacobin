@@ -46,7 +46,7 @@ ByteStreamReader reader = new ByteStreamReaderBuilder()
                 .build();
 ```
 
-In this case we used the `byte[]` stream method, which will internally create a `ByteArrayInputStream`. Jacobin also uses little-endian byte ordering by default, but you can change this behaviour by calling `#order(ByteOrder)`.
+In this case we used the `byte[]` stream method, which will internally create a `ByteArrayInputStream`. Jacobin will use the native [endianness](https://en.wikipedia.org/wiki/Endianness) by default (which in [Intel and AMD modern CPUs is little-endian](https://en.wikipedia.org/wiki/Endianness#Current_architectures)), but you can change this behaviour by calling `#order(ByteOrder)`.
 
 That's it! We can now call any method available in `ByteStreamReader` e.g.:
 
