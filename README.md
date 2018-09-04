@@ -5,13 +5,14 @@
 [![tests][tests]][tests-url]
 [![license][license]][license-url]
 
-High performance and flexible binary streams reader and writer implementations.
+Jacobin provides high performance binary streams reader and writer implementations, as well as bidirectional stream implementations.
 
 ## Features
 
 - Supports efficient offset setting (by only keeping the needed byte buffers in memory)
 - Has different implementations for each [endianness](https://en.wikipedia.org/wiki/Endianness) type
-- Thread-safe by default
+- Easy to make stream accesses and writes thread-safe
+- Uses the [Builder pattern](https://en.wikipedia.org/wiki/Builder_pattern) to create the reader, writers and bidirectional streams
 
 ## Getting started
 
@@ -38,6 +39,8 @@ Next, add the `Jacobin` dependency:
 
 You will need to have Java 8 version 45 or later (older versions _might_ work).
 
+## Creating a ByteStreamReader
+
 Let's get started by creating a little-endian `ByteStreamReader`:
 
 ```java
@@ -57,6 +60,14 @@ try {
     e.printStackTrace();
 }
 ```
+
+## Creating a ByteStreamWriter
+
+TODO
+
+## Creating an InOutByteStream
+
+TODO
 
 Check out the [Javadocs][javadocs-url] to see a list of all the available classes and methods.
 
