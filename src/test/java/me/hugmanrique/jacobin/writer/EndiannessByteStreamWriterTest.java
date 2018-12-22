@@ -1,5 +1,6 @@
 package me.hugmanrique.jacobin.writer;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.nio.ByteOrder;
@@ -12,6 +13,7 @@ import java.nio.ByteOrder;
  * @author Hugo Manrique
  * @since 22/12/2018
  */
+@Ignore
 public class EndiannessByteStreamWriterTest extends ByteStreamWriterTest {
 
     public EndiannessByteStreamWriterTest(ByteOrder byteOrder) {
