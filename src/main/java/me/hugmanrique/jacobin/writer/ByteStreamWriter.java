@@ -4,6 +4,7 @@ import me.hugmanrique.jacobin.order.ByteOrderWriter;
 
 import java.io.Closeable;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 /**
  * Provides a way to write data into a stream.
@@ -53,4 +54,12 @@ public interface ByteStreamWriter extends ByteOrderWriter, Closeable {
      * @throws NullPointerException if {@code data} is null
      */
     void write(byte[] data) throws IOException;
+
+    @Override
+    default int writeUTF(String value) throws IOException {
+        byte[] bytes = value.getBytes(StandardCharsets.UTF_8);
+        write(bytes);
+
+        return bytes.length;
+    }
 }

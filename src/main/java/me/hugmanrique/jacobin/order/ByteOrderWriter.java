@@ -1,5 +1,7 @@
 package me.hugmanrique.jacobin.order;
 
+import com.google.errorprone.annotations.CanIgnoreReturnValue;
+
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
@@ -91,5 +93,6 @@ public interface ByteOrderWriter {
      * @return the number of bytes written
      * @throws IOException if an I/O error occurs
      */
+    @CanIgnoreReturnValue
     int writeUTF(String value) throws IOException;
 }

@@ -37,4 +37,14 @@ public class LittleEndianByteStreamWriterTest extends ByteStreamWriterTest {
         writer.writeInt64(0x123456789ABCDEF0L);
         assertWriteInt64(0x123456789ABCDEF0L);
     }
+
+    // UTF-8 is endianness-independent, so the string writing
+    // test is only executed here.
+    @Test
+    public void testStringWrite() throws Exception {
+        String testString = "abcdef12345678";
+
+        writer.writeUTF(testString);
+        assertWriteString(testString);
+    }
 }

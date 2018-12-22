@@ -61,12 +61,4 @@ public abstract class BaseByteStreamWriter implements ByteStreamWriter {
         stream.write(value);
         this.offset.incrementAndGet();
     }
-
-    @Override
-    public int writeUTF(String value) throws IOException {
-        byte[] bytes = value.getBytes(StandardCharsets.UTF_8);
-        write(bytes);
-
-        return bytes.length;
-    }
 }
