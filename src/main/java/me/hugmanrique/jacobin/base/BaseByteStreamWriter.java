@@ -14,6 +14,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * @since 03/09/2018
  */
 public abstract class BaseByteStreamWriter implements ByteStreamWriter {
+
     protected final OutputStream stream;
     protected final AtomicLong offset;
 

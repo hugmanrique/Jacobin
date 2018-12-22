@@ -9,6 +9,7 @@ import java.io.IOException;
  * @since 03/09/2018
  */
 public interface BigEndianWriter extends ByteOrderWriter {
+
     @Override
     default void writeInt16(short value) throws IOException {
         writeByte((value >> 8) & 0xFF);

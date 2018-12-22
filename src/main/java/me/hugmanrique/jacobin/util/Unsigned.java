@@ -7,6 +7,7 @@ package me.hugmanrique.jacobin.util;
  * @since 02/09/2018
  */
 public class Unsigned {
+
     /**
      * Returns the two least-significant bits of {@code value} from
      * the zero-extended {@code int16}.

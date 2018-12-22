@@ -15,6 +15,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * @since 02/09/2018
  */
 public abstract class BaseByteStreamReader implements ByteStreamReader {
+
     private static final int MAX_NEGATIVE_SKIP_LIMIT = Integer.MAX_VALUE;
 
     protected final InputStream stream;

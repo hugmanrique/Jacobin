@@ -9,6 +9,7 @@ import java.io.IOException;
  * @since 03/09/2018
  */
 public interface ByteOrderWriter {
+
     /**
      * Writes the 8 low-order bits of {@code value} to the internal stream.
      * The 24-high order bits of {@code value} are ignored.

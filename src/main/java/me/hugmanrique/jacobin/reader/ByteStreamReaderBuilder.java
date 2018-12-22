@@ -15,6 +15,7 @@ import static com.google.common.base.Preconditions.checkPositionIndex;
  * @since 02/09/2018
  */
 public final class ByteStreamReaderBuilder {
+
     private InputStream stream;
     private ByteOrder order = ByteOrder.nativeOrder();
 

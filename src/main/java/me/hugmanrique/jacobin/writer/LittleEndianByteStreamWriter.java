@@ -12,6 +12,7 @@ import java.io.OutputStream;
  * @since 03/09/2018
  */
 public class LittleEndianByteStreamWriter extends BaseByteStreamWriter implements LittleEndianWriter {
+
     public LittleEndianByteStreamWriter(OutputStream stream) {
         super(stream);
     }

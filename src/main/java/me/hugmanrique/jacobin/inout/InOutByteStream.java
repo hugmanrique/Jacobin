@@ -18,6 +18,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * @since 03/09/2018
  */
 public abstract class InOutByteStream implements ByteStreamReader, ByteStreamWriter, Closeable {
+
     private final RandomAccessFile file;
 
     /**

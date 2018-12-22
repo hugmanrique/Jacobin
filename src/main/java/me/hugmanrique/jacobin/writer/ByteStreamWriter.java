@@ -12,6 +12,7 @@ import java.io.IOException;
  * @since 03/09/2018
  */
 public interface ByteStreamWriter extends ByteOrderWriter, Closeable {
+
     /**
      * Returns this writer's position, i.e. the offset of the internal stream.
      *

@@ -13,6 +13,7 @@ import java.io.IOException;
  * @since 03/09/2018
  */
 public class LittleEndianInOutByteStream extends InOutByteStream implements LittleEndianReader, LittleEndianWriter {
+
     public LittleEndianInOutByteStream(File file, boolean synchronousWrites) throws IOException {
         super(file, synchronousWrites);
     }
