@@ -4,6 +4,7 @@ import me.hugmanrique.jacobin.writer.ByteStreamWriter;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.concurrent.atomic.AtomicLong;
 
 import static com.google.common.base.Preconditions.checkArgument;
@@ -59,5 +60,13 @@ public abstract class BaseByteStreamWriter implements ByteStreamWriter {
     public void writeByte(int value) throws IOException {
         stream.write(value);
         this.offset.incrementAndGet();
+    }
+
+    @Override
+    public int writeUTF(String value) throws IOException {
+        byte[] bytes = value.getBytes(StandardCharsets.UTF_8);
+        write(bytes);
+
+        return bytes.length;
     }
 }
