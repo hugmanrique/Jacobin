@@ -1,5 +1,6 @@
 package me.hugmanrique.jacobin.reader;
 
+import com.google.common.base.Charsets;
 import com.google.errorprone.annotations.CanIgnoreReturnValue;
 import me.hugmanrique.jacobin.order.ByteOrderReader;
 
@@ -79,4 +80,17 @@ public interface ByteStreamReader extends ByteOrderReader, Closeable {
      * @see InputStream#markSupported()
      */
     boolean supportsNegativeSkips();
+
+    /**
+     * Returns an UTF8 String read from the stream given {@code offset} and a {@code length}
+     *
+     * @param offset an int specifying the offset into the data
+     * @param length an int specifying the number of bytes to read.
+     * @throws IOException if an I/O error occurs
+     */
+    default String readUTF8String(int offset, int length) throws IOException {
+        byte[] buffer = new byte[length];
+        read(buffer, offset, length);
+        return new String(buffer, Charsets.UTF_8);
+    }
 }
