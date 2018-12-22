@@ -6,6 +6,7 @@ import org.junit.Before;
 
 import java.io.ByteArrayOutputStream;
 import java.nio.ByteOrder;
+import java.nio.charset.StandardCharsets;
 
 import static org.junit.Assert.assertEquals;
 
@@ -67,5 +68,15 @@ public class ByteStreamWriterTest {
 
         assertEquals(value, reader.readInt64());
         assertEquals("Writer must write 8 bytes", 0, reader.available());
+    }
+
+    protected void assertWriteString(String value) throws Exception {
+        newReader();
+
+        // TODO I believe this test is superfluous
+        int expectedWriteBytes = value.getBytes(StandardCharsets.UTF_8).length;
+
+        assertEquals(value, reader.readUTF(value.length()));
+        assertEquals("Writer must write " + expectedWriteBytes + " bytes", 0, reader.available());
     }
 }

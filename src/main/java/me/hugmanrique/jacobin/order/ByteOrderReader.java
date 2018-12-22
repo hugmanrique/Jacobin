@@ -94,7 +94,7 @@ public interface ByteOrderReader {
      * depends on the {@link StandardCharsets#UTF_8} charset, and hence may
      * not be equal to {@code length}.
      *
-     * @param length an int specifying the number of bytes to read
+     * @param length the maximum number of bytes to read
      * @return the Unicode string read
      * @throws EOFException if the stream reaches the end before reading all the bytes
      * @throws IOException if an I/O error occurs

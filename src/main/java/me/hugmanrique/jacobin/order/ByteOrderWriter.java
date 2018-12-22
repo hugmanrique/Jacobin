@@ -1,6 +1,9 @@
 package me.hugmanrique.jacobin.order;
 
+import com.google.errorprone.annotations.CanIgnoreReturnValue;
+
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 /**
  * A byte-order dependent byte stream writer interface.
@@ -79,4 +82,17 @@ public interface ByteOrderWriter {
         // TODO Print warning?
         writeInt64(value);
     }
+
+    /**
+     * Writes the UTF-8 {@link String} byte representation of every character
+     * in the string {@code value}. Note that the number of written bytes
+     * depends on the {@link StandardCharsets#UTF_8} charset, and hence may
+     * not be equal to {@code string.length()}.
+     *
+     * @param value the string to be written
+     * @return the number of bytes written
+     * @throws IOException if an I/O error occurs
+     */
+    @CanIgnoreReturnValue
+    int writeUTF(String value) throws IOException;
 }

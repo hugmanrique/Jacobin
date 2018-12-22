@@ -4,6 +4,7 @@ import me.hugmanrique.jacobin.writer.ByteStreamWriter;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.concurrent.atomic.AtomicLong;
 
 import static com.google.common.base.Preconditions.checkArgument;

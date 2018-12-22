@@ -60,8 +60,8 @@ public interface ByteStreamReader extends ByteOrderReader, Closeable {
      * calls on the same stream will return zero.
      *
      * @param buffer the buffer into which the data is read
-     * @param offset an int specifying the offset into the data
-     * @param length an int specifying the number of bytes to read
+     * @param offset the start offset in array {@code buffer} at which the data is written
+     * @param length the maximum number of bytes to read
      * @return the number of bytes read
      * @throws IOException if an I/O error occurs
      * @throws NullPointerException if {@code buffer} is null
@@ -74,8 +74,8 @@ public interface ByteStreamReader extends ByteOrderReader, Closeable {
 
     /**
      * Returns whether this reader supports going back to an already read
-     * byte offset by checking if the underlaying {@link InputStream} supports
-     * marks.
+     * byte offset by checking if the underlying {@link InputStream} supports
+     * the {@code mark} and {@code reset} methods.
      *
      * @see #getOffset()
      * @see InputStream#markSupported()
