@@ -36,8 +36,8 @@ public interface ByteStreamWriter extends ByteOrderWriter, Closeable {
      * Writes {@code length} bytes from the {@code data} array, in order, to the internal stream.
      *
      * @param data the data to write to the stream
-     * @param offset an int specifying the offset in the data
-     * @param length an int specifying the number of bytes to write
+     * @param offset the start offset in the {@code data} array
+     * @param length the number of bytes to write
      * @throws IOException if an I/O error occurs
      * @throws NullPointerException if {@code data} is null
      * @throws IndexOutOfBoundsException if {@code offset} is negative, or {@code length} is negative, or
