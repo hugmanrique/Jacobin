@@ -12,7 +12,7 @@ Jacobin provides high performance binary streams reader and writer implementatio
 - Supports efficient offset setting (by only keeping the needed byte buffers in memory)
 - Has different implementations for each [endianness](https://en.wikipedia.org/wiki/Endianness) type
 - Easy to make stream accesses and writes thread-safe
-- Uses the [Builder pattern](https://en.wikipedia.org/wiki/Builder_pattern) to create the reader, writers and bidirectional streams
+- Uses the [Builder pattern](https://en.wikipedia.org/wiki/Builder_pattern) to create readers, writers and bidirectional streams
 
 ## Getting started
 
