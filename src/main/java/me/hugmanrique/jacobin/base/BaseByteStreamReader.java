@@ -5,6 +5,7 @@ import me.hugmanrique.jacobin.reader.ByteStreamReader;
 import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.concurrent.atomic.AtomicLong;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -100,5 +101,13 @@ public abstract class BaseByteStreamReader implements ByteStreamReader {
         offset.incrementAndGet();
 
         return value;
+    }
+
+    @Override
+    public String readUTF(int length) throws IOException {
+        byte[] bytes = new byte[length];
+        read(bytes, 0, length);
+
+        return new String(bytes, StandardCharsets.UTF_8);
     }
 }

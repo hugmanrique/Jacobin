@@ -15,6 +15,7 @@ import java.io.InputStream;
  * @since 02/09/2018
  */
 public interface ByteStreamReader extends ByteOrderReader, Closeable {
+
     /**
      * Returns this reader's position, i.e. the offset of the internal stream.
      *
