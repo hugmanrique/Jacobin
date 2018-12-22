@@ -6,6 +6,7 @@ import me.hugmanrique.jacobin.order.ByteOrderReader;
 import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 
 /**
  * Provides a way to read data from a stream.
@@ -14,6 +15,7 @@ import java.io.InputStream;
  * @since 02/09/2018
  */
 public interface ByteStreamReader extends ByteOrderReader, Closeable {
+
     /**
      * Returns this reader's position, i.e. the offset of the internal stream.
      *
@@ -79,4 +81,12 @@ public interface ByteStreamReader extends ByteOrderReader, Closeable {
      * @see InputStream#markSupported()
      */
     boolean supportsNegativeSkips();
+
+    @Override
+    default String readUTF(int length) throws IOException {
+        byte[] bytes = new byte[length];
+        read(bytes, 0, length);
+
+        return new String(bytes, StandardCharsets.UTF_8);
+    }
 }

@@ -13,6 +13,7 @@ import java.io.IOException;
  * @since 03/09/2018
  */
 public class BigEndianInOutByteStream extends InOutByteStream implements BigEndianReader, BigEndianWriter {
+
     public BigEndianInOutByteStream(File file, boolean synchronousWrites) throws IOException {
         super(file, synchronousWrites);
     }

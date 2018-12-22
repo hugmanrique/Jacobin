@@ -13,6 +13,7 @@ import static org.junit.Assert.assertEquals;
  * @since 03/09/2018
  */
 public class WriterSkipTest extends ByteStreamWriterTest {
+
     public WriterSkipTest() {
         super(ByteOrder.LITTLE_ENDIAN);
     }

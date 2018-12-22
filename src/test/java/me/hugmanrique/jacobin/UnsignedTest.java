@@ -10,6 +10,7 @@ import static org.junit.Assert.assertEquals;
  * @since 02/09/2018
  */
 public class UnsignedTest {
+
     @Test
     public void testUnsigned() {
         assertEquals(

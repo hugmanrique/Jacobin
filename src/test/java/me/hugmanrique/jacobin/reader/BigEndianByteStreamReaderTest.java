@@ -9,6 +9,7 @@ import java.nio.ByteOrder;
  * @since 02/09/2018
  */
 public class BigEndianByteStreamReaderTest extends ByteStreamReaderTest {
+
     public BigEndianByteStreamReaderTest() {
         this.byteOrder = ByteOrder.BIG_ENDIAN;
     }

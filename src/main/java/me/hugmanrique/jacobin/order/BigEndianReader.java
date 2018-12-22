@@ -9,6 +9,7 @@ import java.io.IOException;
  * @since 03/09/2018
  */
 public interface BigEndianReader extends ByteOrderReader {
+
     @Override
     default short readInt16() throws IOException {
         return (short) (((readByte() & 0xFF) << 8)

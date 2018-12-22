@@ -12,6 +12,7 @@ import java.io.InputStream;
  * @since 02/09/2018
  */
 public class LittleEndianByteStreamReader extends BaseByteStreamReader implements LittleEndianReader {
+
     public LittleEndianByteStreamReader(InputStream stream) {
         super(stream);
     }

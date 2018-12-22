@@ -14,6 +14,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * @since 03/09/2018
  */
 public final class ByteStreamWriterBuilder {
+
     private OutputStream stream;
     private ByteOrder order = ByteOrder.nativeOrder();
 

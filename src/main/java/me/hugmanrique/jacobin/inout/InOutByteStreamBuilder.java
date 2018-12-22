@@ -13,6 +13,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * @since 03/09/2018
  */
 public class InOutByteStreamBuilder {
+
     private File file;
     private boolean synchronous;
     private ByteOrder order = ByteOrder.nativeOrder();

@@ -14,6 +14,7 @@ import static org.junit.Assert.assertEquals;
  * @since 03/09/2018
  */
 public class ByteStreamWriterTest {
+
     protected final ByteOrder byteOrder;
 
     protected ByteArrayOutputStream stream; // Note: this stream doesn't need to be closed

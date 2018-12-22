@@ -9,6 +9,7 @@ import java.nio.ByteOrder;
  * @since 03/09/2018
  */
 public class LittleEndianByteStreamWriterTest extends ByteStreamWriterTest {
+
     public LittleEndianByteStreamWriterTest() {
         super(ByteOrder.LITTLE_ENDIAN);
     }

@@ -4,6 +4,7 @@ import me.hugmanrique.jacobin.util.Unsigned;
 
 import java.io.EOFException;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 /**
  * A byte-order dependent byte stream reader interface.
@@ -12,6 +13,7 @@ import java.io.IOException;
  * @since 03/09/2018
  */
 public interface ByteOrderReader {
+
     /**
      * Reads and returns one byte from the stream, zero-extends it to type {@code int}, and returns
      * the result, which is therefore in the range {@code 0} through {@code 255}.
@@ -85,4 +87,17 @@ public interface ByteOrderReader {
     default long readUInt64() throws IOException {
         return Unsigned.unsignedInt64(readInt64());
     }
+
+    /**
+     * Reads {@code length} input bytes and returns their UTF-8 {@link String}
+     * representation. Note that the length of the returned {@link String}
+     * depends on the {@link StandardCharsets#UTF_8} charset, and hence may
+     * not be equal to {@code length}.
+     *
+     * @param length an int specifying the number of bytes to read
+     * @return the Unicode string read
+     * @throws EOFException if the stream reaches the end before reading all the bytes
+     * @throws IOException if an I/O error occurs
+     */
+    String readUTF(int length) throws IOException;
 }
