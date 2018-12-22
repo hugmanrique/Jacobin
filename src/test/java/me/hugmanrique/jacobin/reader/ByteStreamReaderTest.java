@@ -1,7 +1,10 @@
 package me.hugmanrique.jacobin.reader;
 
+import org.junit.Test;
+
 import java.io.IOException;
 import java.nio.ByteOrder;
+import java.nio.charset.StandardCharsets;
 
 import static org.junit.Assert.assertEquals;
 
@@ -10,6 +13,17 @@ import static org.junit.Assert.assertEquals;
  * @since 02/09/2018
  */
 public class ByteStreamReaderTest {
+
+    /**
+     * Since UTF-8 is interpreted as a sequence of bytes, there is no endian problem.
+     */
+    @Test
+    public void testStringRead() throws Exception {
+        String testString = "abcdef12345678";
+        byte[] stringBytes = testString.getBytes(StandardCharsets.UTF_8);
+
+        assertReadString(stringBytes, testString);
+    }
 
     protected static byte[] bytes(int... bytesAsInts) {
         byte[] bytes = new byte[bytesAsInts.length];

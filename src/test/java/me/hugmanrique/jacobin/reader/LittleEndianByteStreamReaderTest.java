@@ -2,8 +2,6 @@ package me.hugmanrique.jacobin.reader;
 
 import org.junit.Test;
 
-import java.nio.charset.StandardCharsets;
-
 /**
  * @author Hugo Manrique
  * @since 02/09/2018
@@ -30,12 +28,5 @@ public class LittleEndianByteStreamReaderTest extends ByteStreamReaderTest {
             bytes(0x78, 0x56, 0x34, 0x12, 0xF0, 0xDE, 0xBC, 0x9A),
             0x9ABCDEF012345678L
         );
-
-        String testString = "foo";
-        byte[] stringBytes = testString.getBytes(StandardCharsets.UTF_8);
-
-        assertReadString(stringBytes, "foo");
-
-
     }
 }
