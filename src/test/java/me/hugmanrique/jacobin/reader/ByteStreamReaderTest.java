@@ -70,4 +70,11 @@ public class ByteStreamReaderTest {
         assertEquals(value, reader.readInt64());
         assertDataConsumed(data, reader);
     }
+
+    protected void assertReadString(byte[] data, String value) throws Exception {
+        ByteStreamReader reader = newReader(data);
+
+        assertEquals(value, reader.readUTF(data.length));
+        assertDataConsumed(data, reader);
+    }
 }
