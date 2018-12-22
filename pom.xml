@@ -22,9 +22,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>26.0-jre</version>
+            <groupId>com.cookingfox</groupId>
+            <artifactId>guava-preconditions</artifactId>
+            <version>0.1.4</version>
         </dependency>
         <dependency>
             <groupId>com.google.errorprone</groupId>

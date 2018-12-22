@@ -10,6 +10,7 @@ import static org.junit.Assert.assertEquals;
  * @since 02/09/2018
  */
 public class ByteStreamReaderTest {
+
     protected static byte[] bytes(int... bytesAsInts) {
         byte[] bytes = new byte[bytesAsInts.length];
 

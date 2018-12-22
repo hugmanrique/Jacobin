@@ -7,6 +7,7 @@ import org.junit.Test;
  * @since 02/09/2018
  */
 public class LittleEndianByteStreamReaderTest extends ByteStreamReaderTest {
+
     @Test
     public void testLittleEndian() throws Exception {
         assertReadByte(bytes(0x12), 0x12);
