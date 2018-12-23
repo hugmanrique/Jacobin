@@ -51,18 +51,18 @@ public interface ByteStreamReader extends ByteOrderReader, Closeable {
     int available() throws IOException;
 
     /**
-     * Reads some bytes from the internal stream and stores them into the buffer array {@code buffer}.
-     * This method blocks until {@code length} bytes of input data have been read into the array, or
-     * end of file is detected. The number of bytes read is returned, possibly zero. Does not close
-     * the internal stream.
+     * Reads some bytes from the internal stream and stores them in the {@code buffer} array.
+     * This method blocks until {@code length} bytes of input data have been read into the array,
+     * or end of file is detected. The number of bytes read is returned, possibly zero.
+     * This method does not close the internal stream.
      *
      * A caller can detect EOF if the number of bytes read is less than {@code length}. All subsequent
-     * calls on the same stream will return zero.
+     * calls on the same stream will return {@code -1}.
      *
      * @param buffer the buffer into which the data is read
      * @param offset the start offset in array {@code buffer} at which the data is written
      * @param length the maximum number of bytes to read
-     * @return the number of bytes read
+     * @return the number of bytes read, or {@code -1} if the end of the stream has been reached
      * @throws IOException if an I/O error occurs
      * @throws NullPointerException if {@code buffer} is null
      * @throws IndexOutOfBoundsException if {@code offset} is negative, or {@code length} is negative, or
@@ -71,6 +71,25 @@ public interface ByteStreamReader extends ByteOrderReader, Closeable {
      */
     @CanIgnoreReturnValue
     int read(byte[] buffer, int offset, int length) throws IOException;
+
+    /**
+     * Reads some bytes from the internal stream and stores them in the {@code buffer} array.
+     * This method blocks until {@code buffer.length} bytes of input data have been read into the
+     * array, or end of file is detected. The number of bytes read is returned, possibly zero.
+     * This method does not close the internal stream.
+     *
+     * A caller can detect EOF if the number of bytes read is less than the {@code buffer} array's length.
+     * All subsequent calls on the same stream will return {@code -1}.
+     *
+     * @param buffer the buffer into which the data is read
+     * @return the number of bytes read, or {@code -1} if the end of the stream has been reached
+     * @throws IOException if an I/O error occurs
+     * @throws NullPointerException if {@code buffer} is null
+     */
+    @CanIgnoreReturnValue
+    default int read(byte[] buffer) throws IOException {
+        return read(buffer, 0, buffer.length);
+    }
 
     /**
      * Returns whether this reader supports going back to an already read
