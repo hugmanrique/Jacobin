@@ -62,6 +62,11 @@ public abstract class InOutByteStream implements ByteStreamReader, ByteStreamWri
     }
 
     @Override
+    public void reset() throws IOException {
+        setOffset(0);
+    }
+
+    @Override
     public int available() {
         throw new UnsupportedOperationException();
     }

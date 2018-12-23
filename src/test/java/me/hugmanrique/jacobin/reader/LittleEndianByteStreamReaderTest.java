@@ -37,6 +37,21 @@ public class LittleEndianByteStreamReaderTest extends ByteStreamReaderTest {
     }
 
     @Test
+    public void testReset() throws IOException {
+        ByteStreamReader reader = newReader(bytes(0x12, 0x34));
+
+        reader.readByte();
+        reader.readByte();
+
+        reader.reset();
+
+        long newOffset = reader.getOffset();
+
+        assertEquals("Offset after reset must be 0", 0, newOffset);
+
+    }
+
+    @Test
     public void testCompleteArrayRead() throws Exception {
         byte[] original = new byte[] { 0x12, 0x34, 0x56 };
         ByteStreamReader reader = newReader(original);
