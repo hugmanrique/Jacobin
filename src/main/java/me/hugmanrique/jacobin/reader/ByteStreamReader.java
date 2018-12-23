@@ -29,7 +29,8 @@ public interface ByteStreamReader extends ByteOrderReader, Closeable {
      *
      * @param newPosition the new position value; must be non-negative and no
      *                    larger than the internal stream's size.
-     * @throws IOException if the new position is larger than the internal stream's size
+     * @throws IOException if the new position is larger than the internal stream's size,
+     *                     the internal stream does not support seek, or an I/O error occurs
      */
     void setOffset(long newPosition) throws IOException;
 
@@ -38,9 +39,16 @@ public interface ByteStreamReader extends ByteOrderReader, Closeable {
      * until the full amount has been skipped. Does not close the internal stream.
      *
      * @param size the number of bytes to skip
-     * @throws IOException if an I/O error occurs
+     * @throws IOException if this reader doesn't support negative skips
      */
     void skip(long size) throws IOException;
+
+    /**
+     * Resets this reader's position, i.e. the offset of the internal stream is set to zero.
+     *
+     * @throws IOException if an I/O error occurs
+     */
+    void reset() throws IOException;
 
     /**
      * Returns an estimate of the number of bytes that can be reade from the

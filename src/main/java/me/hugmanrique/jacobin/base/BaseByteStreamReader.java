@@ -35,7 +35,8 @@ public abstract class BaseByteStreamReader implements ByteStreamReader {
      * @throws IOException if this reader doesn't support negative skips
      * @see #supportsNegativeSkips() to check whether this reader supports negative skips
      */
-    private void reset() throws IOException {
+    @Override
+    public void reset() throws IOException {
         offset.set(0);
         stream.reset();
         stream.mark(MAX_NEGATIVE_SKIP_LIMIT);
