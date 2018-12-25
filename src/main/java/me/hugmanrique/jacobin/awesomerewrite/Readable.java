@@ -58,6 +58,8 @@ public interface Readable {
      * the {@code mark} and {@code reset} methods.
      *
      * @param offset the number of bytes to skip.
+     * @throws IllegalArgumentException if {@code offset} is negative and the resulting offset
+     *                                  from this operation is negative.
      * @throws UnsupportedOperationException if {@code offset} is negative and this Readable
      *                                       does not support negative skips.
      * @throws IOException if the internal stream does not support seek operations,

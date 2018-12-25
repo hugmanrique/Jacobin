@@ -41,6 +41,10 @@ public class DataReader implements Readable {
 
     @Override
     public void setOffset(long newPosition) throws IOException {
+        if (newPosition < 0) {
+            throw new IllegalArgumentException("Expected a positive absolute offset, got " + newPosition + " instead");
+        }
+
         // Convert the absolute offset into a relative skip
         skip(newPosition - getOffset());
     }
@@ -55,6 +59,11 @@ public class DataReader implements Readable {
             // Since we are going back to 0, we need to calculate
             // the new absolute offset of the skip
             offset = this.offset.get() + offset;
+
+            if (offset < 0) {
+                throw new IllegalArgumentException("Negative skip resulted in negative offset (" + offset + ")");
+            }
+
             reset();
         }
 

@@ -30,7 +30,7 @@ public class DataReaderTest {
         assertEquals("Initial offset must be zero", 0, reader.getOffset());
 
         reader.setOffset(2);
-        assertEquals("Offset after setting must be equal", 2, reader.getOffset());
+        assertEquals("Offset after setting must be right", 2, reader.getOffset());
 
         reader.skip(1);
         assertEquals("Skip must update the offset", 3, reader.getOffset());
@@ -51,6 +51,20 @@ public class DataReaderTest {
 
         reader.skip(4);
         assertEquals("Skips larger than the stream's size should update offset correctly", 4, reader.getOffset());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testNegativeSkip() throws IOException {
+        DataReader reader = new DataReader(createInputStream(0x1));
+
+        reader.skip(-1);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testNegativeOffset() throws IOException {
+        DataReader reader = new DataReader(createInputStream(0xA));
+
+        reader.setOffset(-5);
     }
 
     private static final int[] READ_ARRAY = new int[] { 0xAB, 0xCD, 0xEF, 0x12, 0x34};
