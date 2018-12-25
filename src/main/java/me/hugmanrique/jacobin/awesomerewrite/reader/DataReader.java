@@ -5,13 +5,14 @@ import me.hugmanrique.jacobin.awesomerewrite.Readable;
 import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Objects;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * @author Hugo Manrique
  * @since 24/12/2018
  */
-public abstract class DataReader implements Readable {
+public class DataReader implements Readable {
 
     private static final int MAX_NEGATIVE_SKIP = Integer.MAX_VALUE;
 
@@ -19,7 +20,7 @@ public abstract class DataReader implements Readable {
     protected final AtomicLong offset;
 
     public DataReader(InputStream stream) {
-        this.stream = stream;
+        this.stream = Objects.requireNonNull(stream, "stream");
         this.offset = new AtomicLong();
 
         if (supportsNegativeSkips()) {

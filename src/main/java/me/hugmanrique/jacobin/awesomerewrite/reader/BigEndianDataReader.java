@@ -11,9 +11,9 @@ import java.nio.ByteOrder;
  * @author Hugo Manrique
  * @since 24/12/2018
  */
-public class BigEndianReader extends DataReader implements BigEndianReadable {
+public class BigEndianDataReader extends DataReader implements BigEndianReadable {
 
-    public BigEndianReader(InputStream stream) {
+    public BigEndianDataReader(InputStream stream) {
         super(stream);
     }
 }

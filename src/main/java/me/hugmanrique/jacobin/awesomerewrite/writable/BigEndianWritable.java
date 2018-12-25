@@ -22,7 +22,6 @@ public interface BigEndianWritable extends BaseByteOrderWritable {
     default void writeInt16(short value) throws IOException {
         writeByte((value >> 8) & 0xFF);
         writeByte(value & 0xFF);
-
     }
 
     @Override

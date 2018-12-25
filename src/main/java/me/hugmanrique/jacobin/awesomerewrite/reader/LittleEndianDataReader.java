@@ -11,9 +11,9 @@ import java.nio.ByteOrder;
  * @author Hugo Manrique
  * @since 24/12/2018
  */
-public class LittleEndianReader extends DataReader implements LittleEndianReadable {
+public class LittleEndianDataReader extends DataReader implements LittleEndianReadable {
 
-    public LittleEndianReader(InputStream stream) {
+    public LittleEndianDataReader(InputStream stream) {
         super(stream);
     }
 }

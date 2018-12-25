@@ -31,7 +31,7 @@ public interface Writable {
      * next write occurs.
      *
      * <p>Going back to a previous offset, i.e. {@code {@link #getOffset()} - newPosition}
-     * is positive is only supported if the underlying stream supports resetting.
+     * is positive is only supported if the underlying stream supports seek operations.
      *
      * @param newPosition the new position value; must be non-negative and
      *                    no larger than the internal stream's size.
@@ -50,11 +50,13 @@ public interface Writable {
      * This method will block until the full amount has been skipped. This method
      * does not close the internal stream.
      *
-     * <p>Negative skips are supported only if the underlying stream supports resetting.
+     * <p>Negative skips are not supported by default, but subclasses may implement this
+     * functionality. If so, the implementation will not write zero bytes and perform a
+     * seek operation instead.
      *
      * @param offset the number of bytes to skip.
      * @throws UnsupportedOperationException if {@code offset} is negative and this Writable
-     *                                       does not supports negative skips.
+     *                                       does not support negative skips.
      * @throws IOException if the internal stream does not support seek operations,
      *                     or an I/O error occurs.
      * @see #supportsNegativeSkips() to check whether this Writable supports negative skips.
@@ -72,7 +74,7 @@ public interface Writable {
 
     /**
      * Returns whether this Writable supports going back to already written positions
-     * by checking if the underlying stream supports resetting.
+     * by checking if the underlying stream supports seek operations.
      *
      * @return whether this Writable supports negative skips or not.
      */
