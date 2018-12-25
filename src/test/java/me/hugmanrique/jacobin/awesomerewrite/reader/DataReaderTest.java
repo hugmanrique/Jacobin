@@ -1,11 +1,15 @@
 package me.hugmanrique.jacobin.awesomerewrite.reader;
 
+import me.hugmanrique.jacobin.awesomerewrite.readable.ByteOrderReadable;
 import org.junit.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.EOFException;
 import java.io.IOException;
-import java.util.Arrays;
+import java.nio.charset.StandardCharsets;
 import java.util.stream.IntStream;
 
+import static me.hugmanrique.jacobin.awesomerewrite.reader.TestDataReaderUtils.assertConsumed;
 import static me.hugmanrique.jacobin.awesomerewrite.reader.TestDataReaderUtils.createInputStream;
 import static org.junit.Assert.assertEquals;
 
@@ -102,5 +106,28 @@ public class DataReaderTest {
         IntStream.of(0, 1, 5).forEach(emptyIndex -> {
             assertEquals("Non-read byte should be zero", 0, buffer[emptyIndex]);
         });
+    }
+
+    @Test(expected = EOFException.class)
+    public void testEOFRead() throws IOException {
+        DataReader reader = new DataReader(createInputStream(0x12, 0x34));
+
+        reader.skip(2);
+        reader.readByte();
+    }
+
+    @Test
+    public void testReadUTF() throws IOException {
+        String testString = "abcdef12345678\uD83E\uDD2A \uD83D\uDE00 \uD83D\uDE02";
+        byte[] stringBytes = testString.getBytes(StandardCharsets.UTF_8);
+
+        ByteOrderReadable reader = new LittleEndianDataReader(
+            new ByteArrayInputStream(stringBytes)
+        );
+
+        String actualValue = reader.readUTF(stringBytes.length);
+
+        assertEquals(testString, actualValue);
+        assertConsumed((DataReader) reader);
     }
 }

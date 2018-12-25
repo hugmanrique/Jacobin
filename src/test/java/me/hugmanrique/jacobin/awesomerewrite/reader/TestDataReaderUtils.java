@@ -1,6 +1,9 @@
 package me.hugmanrique.jacobin.awesomerewrite.reader;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * @author Hugo Manrique
@@ -16,5 +19,9 @@ public class TestDataReaderUtils {
         }
 
         return new ByteArrayInputStream(bytes);
+    }
+
+    static void assertConsumed(DataReader reader) throws IOException {
+        assertEquals("Reader offset should be at the end of the stream", 0, reader.available());
     }
 }
