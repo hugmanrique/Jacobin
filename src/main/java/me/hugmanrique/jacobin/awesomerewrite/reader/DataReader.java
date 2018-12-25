@@ -54,7 +54,7 @@ public class DataReader implements Readable {
 
             // Since we are going back to 0, we need to calculate
             // the new absolute offset of the skip
-            offset = this.offset.get() - offset;
+            offset = this.offset.get() + offset;
             reset();
         }
 
