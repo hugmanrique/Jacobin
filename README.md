@@ -80,7 +80,7 @@ int otherValue = reader.readInt16(); // 0x1234
 You can read more about all the available methods on the [`LittleEndianDataReader`](https://jitpack.io/com/github/hugmanrique/Jacobin/master-SNAPSHOT/javadoc/me/hugmanrique/jacobin/reader/LittleEndianDataReader.html) 
 and [`BigEndianDataReader`](https://jitpack.io/com/github/hugmanrique/Jacobin/master-SNAPSHOT/javadoc/me/hugmanrique/jacobin/reader/BigEndianDataReader.html) javadoc pages.
 
-> You should always follow general [Java I/O](https://docs.oracle.com/javase/tutorial/essential/io/) good practices such as closing your streams (`DataReader` implements `Closeable`) when they are no longer needed.
+> You should always follow general [Java I/O](https://docs.oracle.com/javase/tutorial/essential/io/) good practices such as closing your streams when they are no longer needed. `DataReader` implements `Closeable` 😀.
 
 ## Writing binary data
 
