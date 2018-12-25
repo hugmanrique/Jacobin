@@ -9,9 +9,9 @@ import java.io.InputStream;
  * These methods read bytes starting at the current {@code offset} and advance the
  * {@code offset} past the bytes read.
  *
- * <p>It is generally true of all the reading methods in this interface that if end of file
- * is reached before the desired number of bytes has been read, an {@link EOFException} is
- * thrown. If any byte cannot be read for any other reason, an {@link IOException} is thrown.
+ * <p>It is generally true of all the methods that read bytes that if end of file is reached
+ * before the desired number of bytes has been read, an {@link EOFException} is thrown.
+ * If any byte cannot be read for any other reason, an {@link IOException} is thrown.
  *
  * @author Hugo Manrique
  * @since 23/12/2018
@@ -21,7 +21,7 @@ public interface Readable {
     // Offset methods
 
     /**
-     * Returns the current offset, i.e. this reader's position at which the
+     * Returns the current offset, i.e. this Readable's position at which the
      * next read occurs.
      *
      * @return the offset from the beginning of the data.
@@ -41,11 +41,11 @@ public interface Readable {
      *                    no larger than the internal stream's size.
      * @throws IllegalArgumentException if {@code newPosition} is non-positive.
      * @throws UnsupportedOperationException if the new offset is less than {@link #getOffset()}
-     *                                       and this reader does not support negative skips.
+     *                                       and this Readable does not support negative skips.
      * @throws IOException if the new position is larger than the internal stream's size,
      *                     the internal stream does not support seek operations,
      *                     or an I/O error occurs.
-     * @see #supportsNegativeSkips() to check whether this reader supports negative skips.
+     * @see #supportsNegativeSkips() to check whether this Readable supports negative skips.
      */
     void setOffset(long newPosition) throws IOException;
 
@@ -58,29 +58,29 @@ public interface Readable {
      * the {@code mark} and {@code reset} methods.
      *
      * @param offset the number of bytes to skip.
-     * @throws UnsupportedOperationException if {@code offset} is negative and this reader
+     * @throws UnsupportedOperationException if {@code offset} is negative and this Readable
      *                                       does not support negative skips.
      * @throws IOException if the internal stream does not support seek operations,
      *                     or an I/O error occurs.
-     * @see #supportsNegativeSkips() to check whether this reader supports negative skips.
+     * @see #supportsNegativeSkips() to check whether this Readable supports negative skips.
      */
     void skip(long offset) throws IOException;
 
     /**
      * Sets the offset, measured from the beginning of the data, to zero.
      *
-     * @throws UnsupportedOperationException if this reader does not support negative skips.
+     * @throws UnsupportedOperationException if this Readable does not support negative skips.
      * @throws IOException if an I/O error occurs.
-     * @see #supportsNegativeSkips() to check whether this reader supports negative skips.
+     * @see #supportsNegativeSkips() to check whether this Readable supports negative skips.
      */
     void reset() throws IOException;
 
     /**
-     * Returns whether this reader supports going back to already read positions by
+     * Returns whether this Readable supports going back to already read positions by
      * checking if the underlying {@link InputStream} supports the {@code mark} and
      * {@code reset} methods.
      *
-     * @return whether this reader supports negative skips or not.
+     * @return whether this Readable supports negative skips or not.
      * @see InputStream#markSupported()
      */
     boolean supportsNegativeSkips();
@@ -92,7 +92,7 @@ public interface Readable {
      * <p>Note that while some implementations of {@link InputStream} will return the
      * total number of bytes in the stream, many will not. It is never correct to
      * use the return value of this method to allocate a buffer intended to hold
-     * all data in this reader.
+     * all data in this Readable.
      *
      * @return an estimate of the number of bytes that can be read (or skipped over)
      *         without blocking or {@code 0} when it reaches the end of the stream.
@@ -124,12 +124,12 @@ public interface Readable {
      * return {@code -1}.
      *
      * @param buffer the buffer into which the data is read.
-     * @param offset the start offset in array {@code buffer} at which the data is written
-     * @param length the maximum number of bytes to read
+     * @param offset the start offset in array {@code buffer} at which the data is written.
+     * @param length the maximum number of bytes to read.
      * @return the number of bytes read, or {@code -1} if the end of the stream has been reached.
      * @throws IOException if an I/O error occurs.
      * @throws NullPointerException if {@code buffer} is null.
-     * @throws IndexOutOfBoundsException if {@code offset} or {@code length }is negative, or
+     * @throws IndexOutOfBoundsException if {@code offset} or {@code length} is negative, or
      *                                   {@code offset + length} is greater than the length of
      *                                   the {@code buffer} array.
      */
