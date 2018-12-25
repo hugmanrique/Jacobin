@@ -129,7 +129,7 @@ editor.setOffset(8);
 editor.write(importantData);
 ```
 
-Jacobin tries to follow the same semantics as the Java I/O streams API, so you are probably already familiar with most of them 😎
+Jacobin tries to follow the same semantics as the Java I/O streams API, so you are probably already familiar with them 😎
 
 You can read more about the [`LittleEndianFileEditor`](https://jitpack.io/com/github/hugmanrique/Jacobin/master-SNAPSHOT/javadoc/me/hugmanrique/jacobin/editor/LittleEndianFileEditor.html) 
 and [`BigEndianFileEditor`](https://jitpack.io/com/github/hugmanrique/Jacobin/master-SNAPSHOT/javadoc/me/hugmanrique/jacobin/editor/BigEndianFileEditor.html) classes on their javadoc pages.
