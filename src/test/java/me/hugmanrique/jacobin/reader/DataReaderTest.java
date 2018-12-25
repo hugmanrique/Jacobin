@@ -1,6 +1,5 @@
 package me.hugmanrique.jacobin.reader;
 
-import me.hugmanrique.jacobin.readable.ByteOrderReadable;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
@@ -135,13 +134,15 @@ public class DataReaderTest {
         String testString = "abcdef12345678\uD83E\uDD2A \uD83D\uDE00 \uD83D\uDE02";
         byte[] stringBytes = testString.getBytes(StandardCharsets.UTF_8);
 
-        ByteOrderReadable reader = new LittleEndianDataReader(
+        // Since UTF-8 is interpreted as a sequence of bytes,
+        // there is no endian problem.
+        LittleEndianDataReader reader = new LittleEndianDataReader(
             new ByteArrayInputStream(stringBytes)
         );
 
         String actualValue = reader.readUTF(stringBytes.length);
 
         assertEquals(testString, actualValue);
-        TestDataReaderUtils.assertConsumed((DataReader) reader);
+        TestDataReaderUtils.assertConsumed(reader);
     }
 }
