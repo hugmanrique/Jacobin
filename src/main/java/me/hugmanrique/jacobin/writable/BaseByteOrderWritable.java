@@ -7,7 +7,7 @@ import java.nio.charset.StandardCharsets;
  * @author Hugo Manrique
  * @since 25/12/2018
  */
-public interface BaseByteOrderWritable extends ByteOrderWritable {
+interface BaseByteOrderWritable extends ByteOrderWritable {
 
     @Override
     default void writeUInt16(int value) throws IOException {

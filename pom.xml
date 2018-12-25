@@ -90,8 +90,6 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <!-- We add the link ourselves, so that we can choose Java 9 over the version that -source suggests -->
-                    <detectJavaApiLink>false</detectJavaApiLink>
                     <links>
                         <link>https://docs.oracle.com/javase/9/docs/api/</link>
                     </links>

@@ -13,7 +13,7 @@ import java.nio.charset.StandardCharsets;
  * @author Hugo Manrique
  * @since 25/12/2018
  */
-public interface ByteOrderWritable extends Writable {
+interface ByteOrderWritable extends Writable {
 
     /**
      * The byte order of this Writable used to correctly read the bytes
