@@ -46,7 +46,7 @@ You will need to have Java 8 version 45 or later (older versions _might_ work).
 
 You can find instructions for other package managers such as Gradle on the [JitPack project page](https://jitpack.io/#hugmanrique/Jacobin).
 
-## Creating a `DataReader`
+## Reading binary data
 
 Jacobin works by wrapping Java streams. Let's try to read data from a `ByteArrayInputStream`:
 
@@ -77,38 +77,38 @@ reader.skip(2);
 int otherValue = reader.readInt16(); // 0x1234
 ```
 
-You can read more about all the available methods on the [`LittleEndianDataReader`](https://jitpack.io/com/github/hugmanrique/Jacobin/rewrite-a96d4eac17-1/javadoc/me/hugmanrique/jacobin/reader/LittleEndianDataReader.html) 
-and [`BigEndianDataReader`]() javadocs pages.
+You can read more about all the available methods on the [`LittleEndianDataReader`](https://jitpack.io/com/github/hugmanrique/Jacobin/master-SNAPSHOT/javadoc/me/hugmanrique/jacobin/reader/LittleEndianDataReader.html) 
+and [`BigEndianDataReader`](https://jitpack.io/com/github/hugmanrique/Jacobin/master-SNAPSHOT/javadoc/me/hugmanrique/jacobin/reader/BigEndianDataReader.html) javadoc pages.
 
-## Creating a ByteStreamReader
+> You should always follow general [Java I/O](https://docs.oracle.com/javase/tutorial/essential/io/) good practices such as closing your streams (`DataReader` implements `Closeable`) when they are no longer needed.
 
-Let's get started by creating a little-endian `ByteStreamReader`:
+## Writing binary data
 
-```java
-ByteStreamReader reader = new ByteStreamReaderBuilder()
-                .stream(new byte[] { 0x34, 0x12 })
-                .build();
-```
-
-In this case we used the `byte[]` stream method, which will internally create a `ByteArrayInputStream`. Jacobin will use the native [endianness](https://en.wikipedia.org/wiki/Endianness) by default (which in [Intel and AMD modern CPUs is little-endian](https://en.wikipedia.org/wiki/Endianness#Current_architectures)), but you can change this behaviour by calling `#order(ByteOrder)`.
-
-That's it! We can now call any method available in `ByteStreamReader` e.g.:
+Jacobin also provides an `OutputStream` wrapper called `DataWriter`:
 
 ```java
-try {
-    reader.readInt16(); // will be 0x1234
-} catch (IOException e) {
-    e.printStackTrace();
-}
+ByteArrayOutputStream stream = new ByteArrayOutputStream();
+BigEndianDataWriter writer = new BigEndianDataWriter(stream);
 ```
 
-## Creating a ByteStreamWriter
+Let's try to write two `int64`s:
 
-TODO
+```java
+writer.writeInt64(0x123456789ABCDEF0L);
+writer.writeInt64(0x9ABCDEF012345678L);
+```
 
-## Creating an InOutByteStream
+You can check the data was written correctly by converting the `OutputStream` to a byte array:
 
-TODO
+```java
+byte[] writtenBytes = stream.toByteArray(); // { 0x12, 0x34, ..., 0x56, 0x78 }
+```
+
+You can read more about all the available methods on the [`LittleEndianDataWriter`](https://jitpack.io/com/github/hugmanrique/Jacobin/master-SNAPSHOT/javadoc/me/hugmanrique/jacobin/writer/LittleEndianDataWriter.html) 
+and [`BigEndianDataWriter`](https://jitpack.io/com/github/hugmanrique/Jacobin/master-SNAPSHOT/javadoc/me/hugmanrique/jacobin/writer/BigEndianDataWriter.html) javadoc pages.
+
+
+## Working with random access files
 
 Check out the [Javadocs][javadocs-url] to see a list of all the available classes and methods.
 
