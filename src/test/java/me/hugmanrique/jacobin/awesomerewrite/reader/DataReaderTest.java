@@ -87,7 +87,7 @@ public class DataReaderTest {
     }
 
     @Test
-    public void testTotalAddRead() throws IOException {
+    public void testTotalRead() throws IOException {
         DataReader reader = createReadTestReader();
         byte[] buffer = new byte[3];
         int initialOffset = 2;
