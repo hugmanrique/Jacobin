@@ -4,7 +4,9 @@ import me.hugmanrique.jacobin.reader.BigEndianDataReader;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.nio.ByteOrder;
 import java.util.function.Function;
 
 import static org.junit.Assert.assertEquals;
@@ -22,6 +24,15 @@ public class BigEndianDataWriterTest {
 
     private ReaderOutputStream<BigEndianDataReader> createReader() {
         return new ReaderOutputStream<>(READER_FACTORY);
+    }
+
+    @Test
+    public void testByteOrder() {
+        BigEndianDataWriter writer = new BigEndianDataWriter(
+            new ByteArrayOutputStream()
+        );
+
+        assertEquals(ByteOrder.BIG_ENDIAN, writer.getByteOrder());
     }
 
     @Test

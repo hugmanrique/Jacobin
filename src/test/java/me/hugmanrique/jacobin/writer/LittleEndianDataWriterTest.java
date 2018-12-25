@@ -4,7 +4,9 @@ import me.hugmanrique.jacobin.reader.LittleEndianDataReader;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.nio.ByteOrder;
 import java.util.function.Function;
 
 import static org.junit.Assert.assertEquals;
@@ -22,6 +24,15 @@ public class LittleEndianDataWriterTest {
 
     private ReaderOutputStream<LittleEndianDataReader> createReader() {
         return new ReaderOutputStream<>(READER_FACTORY);
+    }
+
+    @Test
+    public void testByteOrder() {
+        LittleEndianDataWriter writer = new LittleEndianDataWriter(
+            new ByteArrayOutputStream()
+        );
+
+        assertEquals(ByteOrder.LITTLE_ENDIAN, writer.getByteOrder());
     }
 
     @Test

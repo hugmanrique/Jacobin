@@ -3,6 +3,7 @@ package me.hugmanrique.jacobin.reader;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.nio.ByteOrder;
 
 import static me.hugmanrique.jacobin.reader.TestDataReaderUtils.assertConsumed;
 import static org.junit.Assert.assertEquals;
@@ -17,6 +18,13 @@ public class BigEndianDataReaderTest {
         return new BigEndianDataReader(
             TestDataReaderUtils.createInputStream(bytesAsInts)
         );
+    }
+
+    @Test
+    public void testByteOrder() {
+        BigEndianDataReader reader = createReader(0x0);
+
+        assertEquals(ByteOrder.BIG_ENDIAN, reader.getByteOrder());
     }
 
     @Test
