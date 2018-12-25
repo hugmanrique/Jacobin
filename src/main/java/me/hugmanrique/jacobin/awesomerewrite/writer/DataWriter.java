@@ -95,6 +95,11 @@ public class DataWriter implements Writable {
     }
 
     @Override
+    public void close() throws IOException {
+        stream.close();
+    }
+
+    @Override
     public void writeByte(int value) throws IOException {
         stream.write(value);
         offset.incrementAndGet();

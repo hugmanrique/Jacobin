@@ -91,6 +91,11 @@ public class DataReader implements Readable {
     }
 
     @Override
+    public void close() throws IOException {
+        stream.close();
+    }
+
+    @Override
     public int readByte() throws IOException {
         int value = stream.read();
 

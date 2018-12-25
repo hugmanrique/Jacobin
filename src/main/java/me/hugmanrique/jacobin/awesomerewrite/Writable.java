@@ -1,5 +1,6 @@
 package me.hugmanrique.jacobin.awesomerewrite;
 
+import java.io.Closeable;
 import java.io.IOException;
 
 /**
@@ -13,7 +14,7 @@ import java.io.IOException;
  * @author Hugo Manrique
  * @since 24/12/2018
  */
-public interface Writable {
+public interface Writable extends Closeable {
 
     // Offset methods
 

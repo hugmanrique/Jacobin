@@ -3,6 +3,7 @@ package me.hugmanrique.jacobin.awesomerewrite.editor;
 import me.hugmanrique.jacobin.awesomerewrite.Readable;
 import me.hugmanrique.jacobin.awesomerewrite.Writable;
 
+import java.io.Closeable;
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
@@ -18,7 +19,7 @@ import static java.util.Objects.requireNonNull;
  * @since 25/12/2018
  * @see RandomAccessFile
  */
-public abstract class FileEditor implements Readable, Writable {
+public abstract class FileEditor implements Readable, Writable, Closeable {
 
     protected final RandomAccessFile file;
 
@@ -115,6 +116,11 @@ public abstract class FileEditor implements Readable, Writable {
      */
     public long safeAvailable() throws IOException {
         return file.length() - getOffset();
+    }
+
+    @Override
+    public void close() throws IOException {
+        file.close();
     }
 
     @Override
