@@ -17,10 +17,10 @@ import java.nio.charset.StandardCharsets;
 public interface ByteOrderReadable extends Readable {
 
     /**
-     * The byte order of this reader used to correctly read the bytes
+     * The byte order of this Readable used to correctly read the bytes
      * of a multibyte value.
      *
-     * @return the byte order of this reader.
+     * @return the byte order of this Readable.
      * @see ByteOrder for an enumeration of byte orders.
      */
     ByteOrder getByteOrder();

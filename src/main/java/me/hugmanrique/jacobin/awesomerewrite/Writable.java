@@ -81,7 +81,7 @@ public interface Writable {
     // Primitive write methods
 
     /**
-     * Writes the 8 low-order bits of {@code value} to the stream. The 24-high order
+     * Writes the 8 low-order bits of {@code value} to the stream. The 24 high-order
      * bits of {@code value} are ignored.
      *
      * @param value the 8-bit value to be written.
