@@ -80,7 +80,7 @@ int otherValue = reader.readInt16(); // 0x1234
 You can read more about all the available methods on the [`LittleEndianDataReader`](https://jitpack.io/com/github/hugmanrique/Jacobin/master-SNAPSHOT/javadoc/me/hugmanrique/jacobin/reader/LittleEndianDataReader.html) 
 and [`BigEndianDataReader`](https://jitpack.io/com/github/hugmanrique/Jacobin/master-SNAPSHOT/javadoc/me/hugmanrique/jacobin/reader/BigEndianDataReader.html) javadoc pages.
 
-> You should always follow general [Java I/O](https://docs.oracle.com/javase/tutorial/essential/io/) good practices such as closing your streams when they are no longer needed. `DataReader` implements `Closeable` 😀.
+> You should always follow general [Java I/O](https://docs.oracle.com/javase/tutorial/essential/io/) good practices such as closing your streams when they are no longer needed. `DataReader` implements `Closeable`. 😊
 
 ## Writing binary data
 
@@ -110,7 +110,31 @@ and [`BigEndianDataWriter`](https://jitpack.io/com/github/hugmanrique/Jacobin/ma
 
 ## Working with random access files
 
-Check out the [Javadocs][javadocs-url] to see a list of all the available classes and methods.
+A random access file behaves like a large array of bytes stored in the file system. 
+A `FileEditor` provides a `Readable` and `Writable` implementation that supports both
+reading and writing to a random access file.
+
+```java
+File myAwesomeFile = Paths.get("foo/bar.dat").toFile();
+
+FileEditor editor = new LittleEndianFileEditor(myAwesomeFile);
+```
+
+Now, let's try to move the offset to the eighth byte (starting from `0`) and write the bytes of an array in that position:
+
+```java
+byte[] importantData = new byte[] { 0x12, 0x34, 0x56 };
+
+editor.setOffset(8);
+editor.write(importantData);
+```
+
+Jacobin tries to follow the same semantics as the Java I/O streams API, so you are probably already familiar with most of them 😎
+
+You can read more about the [`LittleEndianFileEditor`](https://jitpack.io/com/github/hugmanrique/Jacobin/master-SNAPSHOT/javadoc/me/hugmanrique/jacobin/editor/LittleEndianFileEditor.html) 
+and [`BigEndianFileEditor`](https://jitpack.io/com/github/hugmanrique/Jacobin/master-SNAPSHOT/javadoc/me/hugmanrique/jacobin/editor/BigEndianFileEditor.html) classes on their javadoc pages.
+
+Make sure to checkout the [Javadocs overview page][javadocs-url] to see a list of all the available classes and utilities.
 
 ## License
 
