@@ -142,7 +142,7 @@ Make sure to checkout the [Javadocs overview page][javadocs-url] to see a list o
 
 [jitpack]: https://jitpack.io/v/hugmanrique/Jacobin.svg
 [jitpack-url]: https://jitpack.io/#hugmanrique/Jacobin
-[javadocs]: https://img.shields.io/badge/javadocs-master--SNAPSHOT-green.svg
+[javadocs]: https://img.shields.io/badge/javadocs-master-blue.svg
 [javadocs-url]: https://jitpack.io/com/github/hugmanrique/Jacobin/master-SNAPSHOT/javadoc/
 [tests]: https://img.shields.io/travis/hugmanrique/Jacobin/master.svg
 [tests-url]: https://travis-ci.org/hugmanrique/Jacobin
