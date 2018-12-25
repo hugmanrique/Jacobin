@@ -1,6 +1,5 @@
 package me.hugmanrique.jacobin.writer;
 
-import me.hugmanrique.jacobin.writable.ByteOrderWritable;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
@@ -108,8 +107,10 @@ public class DataWriterTest {
         byte[] stringBytes = testString.getBytes(StandardCharsets.UTF_8);
 
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        ByteOrderWritable writable = new LittleEndianDataWriter(stream);
+        LittleEndianDataWriter writable = new LittleEndianDataWriter(stream);
 
+        // Since UTF-8 is interpreted as a sequence of bytes,
+        // there is no endian problem.
         writable.writeUTF(testString);
 
         byte[] actualValue = stream.toByteArray();
