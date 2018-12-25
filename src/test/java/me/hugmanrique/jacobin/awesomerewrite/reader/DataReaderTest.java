@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.stream.IntStream;
 
 import static me.hugmanrique.jacobin.awesomerewrite.reader.TestDataReaderUtils.createInputStream;
 import static org.junit.Assert.assertEquals;
@@ -48,24 +49,28 @@ public class DataReaderTest {
         assertEquals("Skips larger than the stream's size should update offset correctly", 4, reader.getOffset());
     }
 
-    @Test
-    public void testReads() throws IOException {
-        int[] bytes = new int[] { 0xAB, 0xCD, 0xEF, 0x12, 0x34};
+    private static final int[] READ_ARRAY = new int[] { 0xAB, 0xCD, 0xEF, 0x12, 0x34};
 
-        DataReader reader = new DataReader(
-            createInputStream(bytes)
-        );
+    private static DataReader createReadTestReader() {
+        return new DataReader(createInputStream(READ_ARRAY));
+    }
+
+    @Test
+    public void testSingleRead() throws IOException {
+        DataReader reader = createReadTestReader();
 
         int firstByte = reader.readByte();
-        assertEquals("Byte read must be equal", bytes[0], firstByte);
+        assertEquals("Byte read must be equal", READ_ARRAY[0], firstByte);
 
         reader.skip(2);
         int fourthByte = reader.readByte();
 
-        assertEquals("Byte read after skip must be equal", bytes[3], fourthByte);
+        assertEquals("Byte read after skip must be equal", READ_ARRAY[3], fourthByte);
+    }
 
-        // Complete read
-
+    @Test
+    public void testTotalRead() throws IOException {
+        DataReader reader = createReadTestReader();
         byte[] buffer = new byte[3];
         int initialOffset = 1;
 
@@ -74,13 +79,15 @@ public class DataReaderTest {
         reader.read(buffer);
 
         for (int i = initialOffset; i < initialOffset + buffer.length; i++) {
-            assertEquals("Array byte read must be equal", (byte) bytes[i], buffer[i - initialOffset]);
+            assertEquals("Array byte read must be equal", (byte) READ_ARRAY[i], buffer[i - initialOffset]);
         }
+    }
 
-        // Partial read
-
-        buffer = new byte[6];
-        initialOffset = 2;
+    @Test
+    public void testPartialRead() throws IOException {
+        DataReader reader = createReadTestReader();
+        byte[] buffer = new byte[6];
+        int initialOffset = 2;
 
         reader.setOffset(initialOffset);
 
@@ -88,12 +95,12 @@ public class DataReaderTest {
 
         // Check read bytes
         for (int i = initialOffset; i < initialOffset + 3; i++) {
-            assertEquals("Array byte read should be in right index", (byte) bytes[i], buffer[i]);
+            assertEquals("Array byte read should be in right index", (byte) READ_ARRAY[i], buffer[i]);
         }
 
         // Check other bytes
-        for (int emptyIndex : Arrays.asList(0, 1, 5)) {
+        IntStream.of(0, 1, 5).forEach(emptyIndex -> {
             assertEquals("Non-read byte should be zero", 0, buffer[emptyIndex]);
-        }
+        });
     }
 }
