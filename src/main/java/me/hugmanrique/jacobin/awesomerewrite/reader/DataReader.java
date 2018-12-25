@@ -9,6 +9,11 @@ import java.util.Objects;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
+ * A {@link Readable} implementation that reads bytes from an {@link InputStream}.
+ *
+ * <p>This class only supports negative skipping if the {@link InputStream#markSupported()}
+ * method of the underlying stream returns {@code true}.
+ *
  * @author Hugo Manrique
  * @since 24/12/2018
  */

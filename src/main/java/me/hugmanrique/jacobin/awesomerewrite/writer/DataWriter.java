@@ -8,7 +8,7 @@ import java.util.Objects;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
- * A {@link Writable} implementation that writes bytes to a {@link OutputStream}.
+ * A {@link Writable} implementation that writes bytes to an {@link OutputStream}.
  *
  * <p>By default, this class does not support negative skipping. Subclasses are encouraged
  * to override the {@link #skip(long)} and {@link #supportsNegativeSkips()} methods and
