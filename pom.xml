@@ -6,7 +6,26 @@
 
     <groupId>me.hugmanrique</groupId>
     <artifactId>jacobin</artifactId>
-    <version>2.0.0-SNAPSHOT</version>
+    <version>3.0.0-SNAPSHOT</version>
+
+    <name>Jacobin</name>
+    <description>The ultimate binary data reading and writing library</description>
+    <url>https://github.com/hugmanrique/Jacobin</url>
+    <inceptionYear>2018</inceptionYear>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://opensource.org/licenses/MIT</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:git:git@github.com:hugmanrique/Jacobin.git</connection>
+        <developerConnection>scm:git:git@github.com:hugmanrique/Jacobin.git</developerConnection>
+        <url>git@github.com:hugmanrique/Jacobin.git</url>
+    </scm>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -21,11 +40,6 @@
     </repositories>
 
     <dependencies>
-        <dependency>
-            <groupId>com.cookingfox</groupId>
-            <artifactId>guava-preconditions</artifactId>
-            <version>0.1.4</version>
-        </dependency>
         <dependency>
             <groupId>com.google.errorprone</groupId>
             <artifactId>error_prone_annotations</artifactId>
@@ -66,7 +80,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.7</version>
+                <version>3.0.1</version>
                 <executions>
                     <execution>
                         <id>attach-javadocs</id>
@@ -84,6 +98,7 @@
                     <overview>${basedir}/overview.html</overview>
                     <doctitle>Jacobin (${project.version})</doctitle>
                     <bottom>Copyright &#169; Hugo Manrique. Released under the MIT License</bottom>
+                    <nodeprecated>true</nodeprecated>
                 </configuration>
             </plugin>
         </plugins>
