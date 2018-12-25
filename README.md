@@ -3,6 +3,7 @@
 [![jitpack][jitpack]][jitpack-url]
 [![javadocs][javadocs]][javadocs-url]
 [![tests][tests]][tests-url]
+[![codeclimate][codeclimate]][codeclimate-url]
 [![license][license]][license-url]
 
 **Jacobin** is the ultimate binary reading and writing library. It provides high performance and easy-to-use 
@@ -146,5 +147,7 @@ Make sure to checkout the [Javadocs overview page][javadocs-url] to see a list o
 [javadocs-url]: https://jitpack.io/com/github/hugmanrique/Jacobin/master-SNAPSHOT/javadoc/
 [tests]: https://img.shields.io/travis/hugmanrique/Jacobin/master.svg
 [tests-url]: https://travis-ci.org/hugmanrique/Jacobin
+[codeclimate]: https://api.codeclimate.com/v1/badges/7b118ad965fb788768cf/maintainability
+[codeclimate-url]: https://codeclimate.com/github/hugmanrique/Jacobin/maintainability
 [license]: https://img.shields.io/github/license/hugmanrique/Jacobin.svg
 [license-url]: LICENSE
