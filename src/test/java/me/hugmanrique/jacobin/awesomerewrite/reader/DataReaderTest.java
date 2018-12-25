@@ -73,10 +73,10 @@ public class DataReaderTest {
     }
 
     @Test
-    public void testTotalRead() throws IOException {
+    public void testTotalAddRead() throws IOException {
         DataReader reader = createReadTestReader();
         byte[] buffer = new byte[3];
-        int initialOffset = 1;
+        int initialOffset = 2;
 
         reader.setOffset(initialOffset);
 
@@ -85,6 +85,8 @@ public class DataReaderTest {
         for (int i = initialOffset; i < initialOffset + buffer.length; i++) {
             assertEquals("Array byte read must be equal", (byte) READ_ARRAY[i], buffer[i - initialOffset]);
         }
+
+        assertConsumed(reader);
     }
 
     @Test
