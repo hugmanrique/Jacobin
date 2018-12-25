@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.stream.IntStream;
 
+import static me.hugmanrique.jacobin.reader.TestDataReaderUtils.assertConsumed;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -97,7 +98,7 @@ public class DataReaderTest {
             assertEquals("Array byte read must be equal", (byte) READ_ARRAY[i], buffer[i - initialOffset]);
         }
 
-        TestDataReaderUtils.assertConsumed(reader);
+        assertConsumed(reader);
     }
 
     @Test
@@ -143,6 +144,6 @@ public class DataReaderTest {
         String actualValue = reader.readUTF(stringBytes.length);
 
         assertEquals(testString, actualValue);
-        TestDataReaderUtils.assertConsumed(reader);
+        assertConsumed(reader);
     }
 }

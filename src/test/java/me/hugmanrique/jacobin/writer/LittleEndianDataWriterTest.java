@@ -1,7 +1,6 @@
 package me.hugmanrique.jacobin.writer;
 
 import me.hugmanrique.jacobin.reader.LittleEndianDataReader;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
@@ -37,37 +36,37 @@ public class LittleEndianDataWriterTest {
         };
 
         writer.writeInt16((short) 0x1234);
-        Assert.assertEquals((short) 0x1234, stream.read().readInt16());
+        assertEquals((short) 0x1234, stream.read().readInt16());
         assertEquals(stream.size(), 2);
 
         writer.reset();
 
         writer.writeInt16((short) 0xABCD);
-        Assert.assertEquals((short) 0xABCD, stream.read().readInt16());
+        assertEquals((short) 0xABCD, stream.read().readInt16());
         assertEquals(stream.size(), 2);
 
         writer.reset();
 
         writer.writeInt32(0x12345678);
-        Assert.assertEquals(0x12345678, stream.read().readInt32());
+        assertEquals(0x12345678, stream.read().readInt32());
         assertEquals(stream.size(), 4);
 
         writer.reset();
 
         writer.writeInt32(0x9ABCDEF0);
-        Assert.assertEquals(0x9ABCDEF0, stream.read().readInt32());
+        assertEquals(0x9ABCDEF0, stream.read().readInt32());
         assertEquals(stream.size(), 4);
 
         writer.reset();
 
         writer.writeInt64(0x123456789ABCDEF0L);
-        Assert.assertEquals(0x123456789ABCDEF0L, stream.read().readInt64());
+        assertEquals(0x123456789ABCDEF0L, stream.read().readInt64());
         assertEquals(stream.size(), 8);
 
         writer.reset();
 
         writer.writeInt64(0x9ABCDEF012345678L);
-        Assert.assertEquals(0x9ABCDEF012345678L, stream.read().readInt64());
+        assertEquals(0x9ABCDEF012345678L, stream.read().readInt64());
         assertEquals(stream.size(), 8);
     }
 }

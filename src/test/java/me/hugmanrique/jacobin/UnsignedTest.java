@@ -1,7 +1,6 @@
 package me.hugmanrique.jacobin;
 
 import me.hugmanrique.jacobin.util.UnsignedInts;
-import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -14,7 +13,7 @@ public class UnsignedTest {
 
     @Test
     public void testToUnsigned() {
-        Assert.assertEquals(
+        assertEquals(
             Short.toUnsignedInt((short) 0xABCD),
             UnsignedInts.unsignedInt16((short) 0xABCD)
         );
