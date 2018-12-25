@@ -14,7 +14,7 @@ import java.nio.charset.StandardCharsets;
  * @author Hugo Manrique
  * @since 24/12/2018
  */
-public interface ByteOrderReadable extends Readable {
+interface ByteOrderReadable extends Readable {
 
     /**
      * The byte order of this Readable used to correctly read the bytes

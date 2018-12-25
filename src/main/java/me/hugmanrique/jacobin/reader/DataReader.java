@@ -21,8 +21,8 @@ public class DataReader implements Readable {
 
     private static final int MAX_NEGATIVE_SKIP = Integer.MAX_VALUE;
 
-    protected final InputStream stream;
-    protected final AtomicLong offset;
+    private final InputStream stream;
+    private final AtomicLong offset;
 
     public DataReader(InputStream stream) {
         this.stream = Objects.requireNonNull(stream, "stream");

@@ -10,7 +10,7 @@ import java.nio.charset.StandardCharsets;
  * @author Hugo Manrique
  * @since 24/12/2018
  */
-public interface BaseByteOrderReadable extends ByteOrderReadable {
+interface BaseByteOrderReadable extends ByteOrderReadable {
 
     @Override
     default int readUInt16() throws IOException {

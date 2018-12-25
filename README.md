@@ -5,18 +5,23 @@
 [![tests][tests]][tests-url]
 [![license][license]][license-url]
 
-Jacobin provides high performance binary streams reader and writer implementations, as well as bidirectional stream implementations.
+**Jacobin** is the ultimate binary reading and writing library. It provides high performance and easy-to-use 
+binary `DataReader`s, `DataWriter`s and `FileEditor`s, a class that supports both reading and writing to a 
+random access file.
 
 ## Features
 
-- Supports efficient offset setting (by only keeping the needed byte buffers in memory)
-- Has different implementations for each [endianness](https://en.wikipedia.org/wiki/Endianness) type
-- Easy to make stream accesses and writes thread-safe
-- Uses the [Builder pattern](https://en.wikipedia.org/wiki/Builder_pattern) to create readers, writers and bidirectional streams
+- Primitive signed and unsigned reading and writing methods
+- Supports parsing and writing UTF-8 strings
+- Memory-efficient offset manipulation (by only keeping the needed byte buffers loaded) 
+- Different implementations for each [endianness](https://en.wikipedia.org/wiki/Endianness) format
+- Atomic offset setting, only reads and writes require synchronization
+- `Readable` and `Writable` interfaces
+- 64-bit (`long`) offsets
 
 ## Getting started
 
-Install Jacobin using [Maven](https://maven.apache.org/) by adding the JitPack repository to your `pom.xml` file:
+You can install Jacobin using [Maven](https://maven.apache.org/) by adding the [JitPack](https://jitpack.io/) repository to your `pom.xml` file:
 
 ```xml
 <repositories>
@@ -38,6 +43,42 @@ Next, add the `Jacobin` dependency:
 ```
 
 You will need to have Java 8 version 45 or later (older versions _might_ work).
+
+You can find instructions for other package managers such as Gradle on the [JitPack project page](https://jitpack.io/#hugmanrique/Jacobin).
+
+## Creating a `DataReader`
+
+Jacobin works by wrapping Java streams. Let's try to read data from a `ByteArrayInputStream`:
+
+```java
+ByteArrayInputStream stream = new ByteArrayInputStream(
+    new byte[] { 0x78, 0x56, 0x34, 0x12 }
+);
+```
+
+Now, let's create a `DataReader` instance:
+
+```java
+LittleEndianDataReader reader = new LittleEndianDataReader(stream);
+```
+
+That's it! You can now use any endianness-dependent methods such as `#readUInt32`:
+
+```java
+long value = reader.readUInt32(); // 0x12345678
+```
+
+Let's say we want to go back to the beginning, skip two bytes and read an `int16`:
+
+```java
+reader.reset();
+reader.skip(2);
+
+int otherValue = reader.readInt16(); // 0x1234
+```
+
+You can read more about all the available methods on the [`LittleEndianDataReader`](https://jitpack.io/com/github/hugmanrique/Jacobin/rewrite-a96d4eac17-1/javadoc/me/hugmanrique/jacobin/reader/LittleEndianDataReader.html) 
+and [`BigEndianDataReader`]() javadocs pages.
 
 ## Creating a ByteStreamReader
 
