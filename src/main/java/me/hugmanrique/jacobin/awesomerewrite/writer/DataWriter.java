@@ -49,26 +49,39 @@ public class DataWriter implements Writable {
             throw new UnsupportedOperationException("This writer does not support negative skips");
         }
 
-        if (offset < BLOCK_SIZE) {
-            // We can perform the skip in a single `write(byte[])` operation.
-            byte[] zeroBlock = new byte[(int) offset];
+        writeZeroBytes(offset);
+        this.offset.addAndGet(offset);
+    }
+
+    /**
+     * Writes {@code amount} zero bytes ({@code 0x0}) of data to the internal stream.
+     * If the amount to skip is less than {@link #BLOCK_SIZE}, the operation will be
+     * performed in a single {@link OutputStream#write(byte[])} call. Otherwise,
+     * a byte array of size {@link #BLOCK_SIZE} will be allocated and will be used
+     * to perform repeated {@link OutputStream#write(byte[])} calls.
+     *
+     * @param amount the amount of bytes to zero-write.
+     * @throws IOException if an I/O error occurs.
+     */
+    protected void writeZeroBytes(long amount) throws IOException {
+        if (amount < BLOCK_SIZE) {
+            // We can perform the write in a single operation.
+            byte[] zeroBlock = new byte[(int) amount];
 
             stream.write(zeroBlock);
         } else {
-            // Perform `write(byte[])` operations using arrays of size `BLOCK_SIZE`
+            // Perform write operations allocating a single array of size `BLOCK_SIZE`
             byte[] zeroBlock = new byte[BLOCK_SIZE];
-            int totalBlocks = (int) (offset / BLOCK_SIZE);
+            int totalBlocks = (int) (amount / BLOCK_SIZE);
 
             for (int i = 0; i < totalBlocks; i++) {
-                // Write full blocks of zeros
+                // Write full block of zeros
                 stream.write(zeroBlock);
             }
 
-            // Write remaining non-full block
-            stream.write(zeroBlock, 0, (int) (offset % BLOCK_SIZE));
+            // Write remaining block
+            stream.write(zeroBlock, 0, (int) (amount % BLOCK_SIZE));
         }
-
-        this.offset.addAndGet(offset);
     }
 
     @Override
