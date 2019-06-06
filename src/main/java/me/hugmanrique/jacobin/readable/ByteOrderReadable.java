@@ -114,4 +114,6 @@ interface ByteOrderReadable extends Readable {
     String readUTF(int length) throws IOException;
 
     // TODO Add a readUTF() method that reads until a null terminator (\0) is read
+    
+    // TODO readVarLong() method
 }
